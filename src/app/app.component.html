@@ -1,20 +1,77 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <mat-spinner></mat-spinner>
+  </mat-drawer>
 
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button type="button" class="example-icon" mat-button (click)="drawer.toggle()">
+        menu
+      </button>
+      <span class="example-spacer"></span>
+      <mat-icon class="example-icon">favorite</mat-icon>
+      <mat-icon class="example-icon">delete</mat-icon>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div class="example-sidenav-content">
+    <mat-tab-group class="demo-tab-group">
+      <mat-tab label="Tab 1">
+        <div class="demo-tab-content">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue.
+          Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus.
+          In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec,
+          feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor,
+          orci enim rutrum enim, vel tempor sapien arcu a tellus.
+        </div>
+      </mat-tab>
+      <mat-tab label="Tab 2">
+        <ng-template mat-tab-label>
+          ⭐
+        </ng-template>
+        <div class="demo-tab-content">
+          <mat-form-field>
+            <mat-select placeholder="Favorite food">
+              <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{ food.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-tab>
+      <mat-tab label="Tab 3" disabled>
+        No content
+      </mat-tab>
+      <mat-tab label="Tab 4">
+        <div class="demo-tab-content">
+          <mat-chip-list>
+            <mat-chip>One fish</mat-chip>
+            <mat-chip>Two fish</mat-chip>
+            <mat-chip color="primary" selected="true">Primary fish</mat-chip>
+            <mat-chip color="accent" selected="true">Accent fish</mat-chip>
+          </mat-chip-list>
+          <mat-form-field class="demo-chip-list">
+            <mat-chip-list #chipList>
+              <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                        [removable]="removable" (remove)="remove(fruit)">
+                {{fruit.name}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input placeholder="New fruit..."
+                     [matChipInputFor]="chipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="addOnBlur"
+                     (matChipInputTokenEnd)="add($event)" />
+            </mat-chip-list>
+          </mat-form-field>
+        </div>
+      </mat-tab>
+      <mat-tab label="Tab 5">
+        No content
+      </mat-tab>
+      <mat-tab label="Tab 6">
+        No content
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</mat-drawer-container>
