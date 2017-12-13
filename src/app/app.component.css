@@ -4,6 +4,7 @@
 }
 
 .example-sidenav-content {
+  overflow: scroll;
   display: flex;
   height: 100%;
   align-items: center;

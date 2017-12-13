@@ -1,9 +1,9 @@
 <mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
+  <mat-drawer [class.mat-elevation-z16]="true" #drawer class="example-sidenav" mode="side">
     <mat-spinner></mat-spinner>
   </mat-drawer>
 
-  <mat-toolbar color="primary">
+  <mat-toolbar [class.mat-elevation-z4]="true" color="primary">
     <mat-toolbar-row>
       <button type="button" class="example-icon" mat-button (click)="drawer.toggle()">
         menu
