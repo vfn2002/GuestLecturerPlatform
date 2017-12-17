@@ -1,0 +1,16 @@
+.sign-up-container {
+  padding: 0 300px;
+}
+.sign-up-description {
+  padding: 18px;
+}
+
+.sign-up-card {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}

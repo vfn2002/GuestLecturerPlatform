@@ -1,0 +1,19 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+.login-container {
+  width: 40vw;
+  padding: 0 65px;
+}
+.login-button {
+  width: 100%;
+  font-size: large;
+}
+.singn-up-text {
+  font-size: small;
+}
