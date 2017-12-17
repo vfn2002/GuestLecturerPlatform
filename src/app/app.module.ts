@@ -5,7 +5,7 @@ import {
   MatAutocompleteModule,
   MatButtonModule, MatCardModule, MatChipsModule, MatDialogModule, MatFormField, MatFormFieldModule, MatGridListModule,
   MatIconModule,
-  MatInputModule,
+  MatInputModule, MatListModule,
   MatProgressSpinnerModule,
   MatSelectModule,
   MatSidenavModule,
@@ -35,6 +35,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
   ],
   imports: [
     routing,
+    MatListModule,
     MatCardModule,
     MatAutocompleteModule,
     MatGridListModule,

@@ -7,3 +7,9 @@
 .app-bar-icon {
   padding: 0 14px;
 }
+.logo {
+  height: 55px;
+}
+.app-bar {
+  background-color: white;
+}

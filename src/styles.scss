@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css"; */
+
+@import '~@angular/material/theming';
+@include mat-core();
+@import "theme.scss";
+
+html, body {
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+}
+* {
+  @include angular-material-theme($theme);
+  outline: none !important;
+}
+
+.content-container  {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  max-width: 800px;
+  margin: 12px 0;
+}
+
+.full-width-button {
+  width: 100%;
+  font-size: large;
+}

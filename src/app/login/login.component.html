@@ -7,8 +7,8 @@
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput type="password" placeholder="Password">
-        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        <input matInput [type]="(hide) ? 'password' : 'text'" placeholder="Password">
+        <mat-icon style="cursor: pointer" matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
       </mat-form-field>
     </div>
   </mat-dialog-content>
@@ -18,6 +18,6 @@
           <button mat-button mat-dialog-close color="primary" [routerLink]="['/signup']">New user? Sign up here.</button>
         </p>
       </div>
-    <button mat-button mat-dialog-close color="primary" class="login-button">SIGN IN</button>
+    <button mat-button mat-dialog-close color="primary" class="full-width-button">SIGN IN</button>
   </mat-dialog-actions>
 </div>

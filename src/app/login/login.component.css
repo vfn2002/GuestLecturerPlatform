@@ -7,8 +7,7 @@
   width: 100%;
 }
 .login-container {
-  width: 40vw;
-  padding: 0 65px;
+  max-width: 400px;
 }
 .login-button {
   width: 100%;

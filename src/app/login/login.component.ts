@@ -10,6 +10,8 @@ export class LoginComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
 
+  hide = true;
+
   ngOnInit() {
   }
 

@@ -1,14 +1,22 @@
 <mat-drawer-container class="drawer-menu" autosize>
 
   <mat-drawer #drawer class="drawer-menu" mode="side" [class.mat-elevation-z16]="true">
-
+    <mat-list>
+      <mat-list-item> Student </mat-list-item>
+      <mat-list-item> Professional </mat-list-item>
+      <mat-list-item> Dank memer </mat-list-item>
+      <mat-list-item> Student </mat-list-item>
+      <mat-list-item> Professional </mat-list-item>
+      <mat-list-item> Dank memer </mat-list-item>
+    </mat-list>
   </mat-drawer>
 
-  <mat-toolbar color="primary" [class.mat-elevation-z4]="true">
+  <mat-toolbar color="" class="app-bar" [class.mat-elevation-z4]="true">
     <mat-toolbar-row>
       <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon aria-label="">menu</mat-icon>
       </button>
+      <img class="logo" src="http://fypster.com/wp-content/uploads/2017/11/fypster.png">
       <span class="app-bar-spacer"></span>
       <button mat-icon-button (click)="openLoginDialogue()">
         <mat-icon aria-label>account_circle</mat-icon>

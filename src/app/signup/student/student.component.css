@@ -1,6 +1,7 @@
-.student-container {
+:host {
   width: 100%;
-  padding: 0 300px;
+  display: flex;
+  justify-content: center;
 }
 .half-width-field {
   width: 45%;
