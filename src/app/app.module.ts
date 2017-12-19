@@ -8,7 +8,7 @@ import {
   MatInputModule, MatListModule,
   MatProgressSpinnerModule,
   MatSelectModule,
-  MatSidenavModule,
+  MatSidenavModule, MatSnackBarModule,
   MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
@@ -21,6 +21,15 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { StudentComponent } from './signup/student/student.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {ApplicationService} from "./services/application.service";
+import {UserService} from "./services/user.service";
+import {ApiService} from "./services/api.service";
+import {AuthService} from "./services/auth.service";
+import {LoginService} from "./services/login.service";
+import {Http, HttpModule} from "@angular/http";
+import { LecturerComponent } from './signup/lecturer/lecturer.component';
+import { ProfessionalComponent } from './signup/professional/professional.component';
 
 
 @NgModule({
@@ -31,7 +40,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     DrawerMenuComponent,
     LoginComponent,
     SignupComponent,
-    StudentComponent
+    StudentComponent,
+    LecturerComponent,
+    ProfessionalComponent
   ],
   imports: [
     routing,
@@ -53,9 +64,18 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatSnackBarModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [
+    LoginService,
+    ApplicationService,
+    UserService,
+    ApiService,
+    AuthService
+  ],
   bootstrap: [AppComponent],
   entryComponents: [
     LoginComponent

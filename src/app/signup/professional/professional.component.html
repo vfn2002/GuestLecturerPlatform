@@ -1,0 +1,112 @@
+<div class="content-container">
+  <div class="professional-container">
+    <div class="instruction-container">
+      <h1 mat-display-2 class="mat-display-2 title">Sign up as a professional</h1>
+      <p>
+        Fun fact #69: The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.
+      </p>
+    </div>
+    <mat-card class="sign-up-card">
+      <mat-card-header>
+      </mat-card-header>
+      <mat-card-content>
+        <form *ngIf="!isSignedUp">
+          <table class="full-width-row" cellspacing="0"><tr>
+            <td>
+              <mat-form-field class="full-width-row">
+                <input matInput
+                       id="firstName"
+                       name="firstName"
+                       placeholder="First name"
+                       [formControl]="professionalForm.controls['firstName']"
+                       [(ngModel)]="professional.name">
+                <mat-error *ngIf="professionalForm.controls['firstName'].invalid">
+                  First name is required
+                </mat-error>
+              </mat-form-field>
+
+            </td>
+            <td>
+              <mat-form-field class="full-width-row">
+                <input matInput
+                       id="lastName"
+                       name="lastName"
+                       [formControl]="professionalForm.controls['lastName']"
+                       placeholder="Last Name">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="half-width-field">
+                <input matInput
+                       type="number"
+                       id="age"
+                       name="age"
+                       placeholder="Age"
+                       [(ngModel)]="professional.age">
+              </mat-form-field>
+              <mat-form-field class="half-width-field">
+                <mat-select class="full-width-row"
+                            placeholder="Gender">
+                  <mat-option value="Male">Male</mat-option>
+                  <mat-option value="Female">Female</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr></table>
+          <mat-form-field class="full-width-row">
+            <input matInput
+                   id="email"
+                   name="email"
+                   placeholder="Email"
+                   [(ngModel)]="professional.email">
+          </mat-form-field>
+          <mat-form-field class="full-width-row">
+            <input matInput
+                   id="company"
+                   name="company"
+                   placeholder="Company"
+                   [(ngModel)]="professional.company">
+          </mat-form-field>
+          <mat-form-field class="full-width-row">
+            <input matInput
+                   id="education"
+                   name="education"
+                   placeholder="Education"
+                   [(ngModel)]="professional.education">
+          </mat-form-field>
+          <mat-form-field class="full-width-row">
+            <input matInput
+                   id="password"
+                   type="password"
+                   name="password"
+                   placeholder="Password"
+                   [(ngModel)]="professional.password">
+          </mat-form-field>
+          <mat-form-field class="full-width-row">
+            <input matInput
+                   id="passwordConfirm"
+                   type="password"
+                   name="passwordConfirm"
+                   placeholder="Password Confirmation"
+                   [(ngModel)]="professional.password_confirmation">
+          </mat-form-field>
+        </form>
+        <div *ngIf="isSignedUp" class="successful-container">
+          <div class="text-container">
+            <h2>You have successfully been signed up!</h2>
+            <p>We have sent you an email with a confirmation link.</p>
+            <p>Click the link to activate your account.</p>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <div *ngIf="!isSignedUp" class="actions-container">
+          <button *ngIf="!isLoading" mat-button type="submit" class="full-width-button" (click)="submitForm()" color="primary">Sign up</button>
+          <div class="loadingContainer" *ngIf="isLoading">
+            <mat-spinner diameter="30"></mat-spinner>
+          </div>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

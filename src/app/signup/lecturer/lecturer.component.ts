@@ -1,34 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserService} from "../../services/user.service";
+import {ApplicationService} from "../../services/application.service";
 
 @Component({
-  selector: 'app-student',
-  templateUrl: './student.component.html',
-  styleUrls: ['./student.component.css']
+  selector: 'app-lecturer',
+  templateUrl: './lecturer.component.html',
+  styleUrls: ['./lecturer.component.css']
 })
-export class StudentComponent implements OnInit {
+export class LecturerComponent implements OnInit {
 
-  studentForm: FormGroup;
-  student = {};
+  lecturerForm: FormGroup;
+  lecturer = {};
   isLoading = false;
   isSignedUp = false;
 
   constructor(private formBuilder: FormBuilder,
-              private userService: UserService) {
+              private application: ApplicationService) {
     /**
-     * We initialize the validators for the student sign up form.
+     * We initialize the validators for the lecturer sign up form.
      */
-    this.studentForm = formBuilder.group(
+    this.lecturerForm = formBuilder.group(
       {
         'firstName': [null, Validators.required],
         'lastName': [null, Validators.required],
         'gender': [null, Validators.required],
         'email': [null, Validators.compose([Validators.required, Validators.email])],
-        'university': [null, Validators.required],
-        'major': [null, Validators.required],
-        'semester': [null, Validators.required],
-        'age': [null, Validators.required],
+        'field': [null, Validators.required],
         'password': [null, Validators.compose([Validators.required, Validators.minLength(6)])],
         'passwordConfirm': [null, Validators.compose([Validators.required, Validators.minLength(6)])]
       },
@@ -46,11 +43,11 @@ export class StudentComponent implements OnInit {
   submitForm() {
     this.isLoading = true;
 
-    const wrappedStudent = {
-      student: this.student
+    const wrappedLecturer = {
+      lecturer: this.lecturer
     };
 
-    this.userService.postStudent(wrappedStudent)
+    this.application.submitLecturer(wrappedLecturer)
       .subscribe(
         res => {
           this.handleSuccess();
@@ -71,15 +68,15 @@ export class StudentComponent implements OnInit {
   }
 }
 
-  export class PasswordValidation {
+export class PasswordValidation {
 
-    static matchPassword(abstractControl: AbstractControl) {
-      const password = abstractControl.get('password').value;
-      const confirmPassword = abstractControl.get('passwordConfirm').value;
-      if (password !== confirmPassword) {
-        abstractControl.get('confirmPassword').setErrors({MatchPassword: true});
-      } else {
-        return null;
-      }
+  static matchPassword(AC: AbstractControl) {
+    const password = AC.get('password').value; // to get value in input tag
+    const confirmPassword = AC.get('passwordConfirm').value; // to get value in input tag
+    if (password !== confirmPassword) {
+      AC.get('confirmPassword').setErrors({MatchPassword: true});
+    } else {
+      return null;
     }
   }
+}

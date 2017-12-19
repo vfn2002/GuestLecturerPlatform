@@ -1,7 +1,7 @@
 <div class="content-container">
   <div class="student-container">
     <div class="instruction-container">
-      <h1 class="mat-display-2 title">Sign up as a student</h1>
+      <h1 mat-display-2 class="mat-display-2 title">Sign up as a student</h1>
       <p>
         Fun fact #69: The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.
       </p>
@@ -10,36 +10,162 @@
       <mat-card-header>
       </mat-card-header>
       <mat-card-content>
-        <form class="example-form">
+        <form *ngIf="!isSignedUp">
           <table class="full-width-row" cellspacing="0"><tr>
-            <td><mat-form-field class="full-width-row">
-              <input matInput placeholder="First name">
-            </mat-form-field></td>
-            <td><mat-form-field class="full-width-row">
-              <input matInput placeholder="Last Name">
-            </mat-form-field></td>
+            <td>
+              <mat-form-field class="full-width-row">
+              <input matInput
+                     id="firstName"
+                     name="firstName"
+                     placeholder="First name"
+                     [formControl]="studentForm.controls['firstName']"
+                     [(ngModel)]="student.name">
+              <mat-error *ngIf="studentForm.controls['firstName'].invalid">
+                First name is required
+              </mat-error>
+            </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="full-width-row">
+              <input matInput
+                     id="lastName"
+                     name="lastName"
+                     placeholder="Last Name"
+                     [formControl]="studentForm.controls['lastName']"
+                     >
+              <mat-error *ngIf="studentForm.controls['lastName'].invalid">
+                Last name is required
+              </mat-error>
+            </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="half-width-field">
+                <input matInput
+                       type="number"
+                       id="age"
+                       name="age"
+                       placeholder="Age"
+                       [formControl]="studentForm.controls['age']"
+                       [(ngModel)]="student.age">
+                <mat-error *ngIf="studentForm.controls['age'].invalid">
+                  Age is required
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="half-width-field">
+                <mat-select class="full-width-row"
+                            placeholder="Gender"
+                            [formControl]="studentForm.controls['gender']">
+                  <mat-option value="Male">Male</mat-option>
+                  <mat-option value="Female">Female</mat-option>
+                </mat-select>
+                <mat-error *ngIf="studentForm.controls['gender'].invalid">
+                  Gender is required
+                </mat-error>
+              </mat-form-field>
+            </td>
           </tr></table>
 
           <mat-form-field class="full-width-row">
-            <input matInput placeholder="Email" [formControl]="emailFormControl"
-                   [errorStateMatcher]="matcher">
-            <mat-hint>Errors appear instantly!</mat-hint>
-            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-              Please enter a valid email address
-            </mat-error>
-            <mat-error *ngIf="emailFormControl.hasError('required')">
-              Email is <strong>required</strong>
+            <input matInput
+                   id="email"
+                   name="email"
+                   placeholder="Email"
+                   [formControl]="studentForm.controls['email']"
+                   [(ngModel)]="student.email">
+            <mat-error *ngIf="studentForm.controls['email'].invalid">
+              Email is required
             </mat-error>
           </mat-form-field>
 
           <mat-form-field class="full-width-row">
-            <input matInput placeholder="University">
+            <input matInput
+                   id="university"
+                   name="university"
+                   placeholder="University"
+                   [formControl]="studentForm.controls['university']"
+                   [(ngModel)]="student.university">
+            <mat-error *ngIf="studentForm.controls['university'].invalid">
+              University is required
+            </mat-error>
+          </mat-form-field>
+          <table class="full-width-row" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field class="full-width-row">
+                  <input matInput
+                         id="major"
+                         name="major"
+                         placeholder="Major"
+                         [formControl]="studentForm.controls['major']"
+                         [(ngModel)]="student.major">
+                  <mat-error *ngIf="studentForm.controls['major'].invalid">
+                    Major is required
+                  </mat-error>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="full-width-row">
+                  <mat-select class="full-width-row"
+                              placeholder="Semester"
+                              [(value)]="student.semester"
+                              [formControl]="studentForm.controls['semester']">
+                    <mat-option value="1">1st</mat-option>
+                    <mat-option value="2">2nd</mat-option>
+                    <mat-option value="3">3rd</mat-option>
+                    <mat-option value="4">4th</mat-option>
+                    <mat-option value="5">5th</mat-option>
+                    <mat-option value="6">6th</mat-option>
+                    <mat-option value="7">7th</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="studentForm.controls['semester'].invalid">
+                    Semester is required
+                  </mat-error>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+
+          <mat-form-field class="full-width-row">
+            <input matInput
+                   id="password"
+                   type="password"
+                   name="password"
+                   placeholder="Password"
+                   [formControl]="studentForm.controls['password']"
+                   [(ngModel)]="student.password">
+            <mat-error *ngIf="studentForm.controls['password'].invalid">
+              Password must be at least 6 characters.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width-row">
+            <input matInput
+                   id="passwordConfirm"
+                   type="password"
+                   name="passwordConfirm"
+                   placeholder="Password Confirmation"
+                   [formControl]="studentForm.controls['passwordConfirm']"
+                   [(ngModel)]="student.password_confirmation">
+            <mat-error *ngIf="studentForm.controls['passwordConfirm'].invalid">
+              Passwords must be identical.
+            </mat-error>
           </mat-form-field>
         </form>
+        <div *ngIf="isSignedUp" class="successful-container">
+          <div class="text-container">
+            <h2>You have successfully been signed up!</h2>
+            <p>We have sent you an email with a confirmation link.</p>
+            <p>Click the link to activate your account.</p>
+          </div>
+        </div>
       </mat-card-content>
-
       <mat-card-actions>
-        <button mat-button class="full-width-button" color="primary" [routerLink]="'/signup/student'">Sign up</button>
+        <div *ngIf="!isSignedUp" class="actions-container">
+          <button *ngIf="!isLoading" mat-button type="submit" [disabled]="studentForm.invalid" class="full-width-button" (click)="submitForm()" color="primary" [routerLink]="'/signup/student'">Sign up</button>
+          <div class="loadingContainer" *ngIf="isLoading">
+            <mat-spinner diameter="30"></mat-spinner>
+          </div>
+        </div>
       </mat-card-actions>
     </mat-card>
   </div>

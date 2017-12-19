@@ -1,23 +1,36 @@
 <div class="login-container">
   <h1 mat-dialog-title>Login</h1>
   <mat-dialog-content>
-    <div class="example-container">
+    <div class="loading-container" *ngIf="isLoading">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
+    <div class="login-form-container" *ngIf="!isLoading">
       <mat-form-field>
-        <input matInput placeholder="Email">
+        <mat-select class="full-width-row"
+                    placeholder="Select role"
+                    [(value)]="credentials.type">
+          <mat-option value="student">Student</mat-option>
+          <mat-option value="lecturer">Lecturer</mat-option>
+          <mat-option value="professional">Professional</mat-option>
+        </mat-select>
       </mat-form-field>
-
       <mat-form-field>
-        <input matInput [type]="(hide) ? 'password' : 'text'" placeholder="Password">
+        <input matInput placeholder="Email" [(ngModel)]="credentials.email">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [type]="(hide) ? 'password' : 'text'" placeholder="Password" [(ngModel)]="credentials.password">
         <mat-icon style="cursor: pointer" matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
       </mat-form-field>
     </div>
   </mat-dialog-content>
   <mat-dialog-actions>
+    <div class="actions-container" *ngIf="!isLoading">
       <div class="new-user">
         <p class="singn-up-text mat-caption">
-          <button mat-button mat-dialog-close color="primary" [routerLink]="['/signup']">New user? Sign up here.</button>
+          <button mat-button mat-dialog-close [routerLink]="['/signup']">New user? Sign up here.</button>
         </p>
       </div>
-    <button mat-button mat-dialog-close color="primary" class="full-width-button">SIGN IN</button>
+      <button mat-button color="primary" class="full-width-button" (click)="login()">SIGN IN</button>
+    </div>
   </mat-dialog-actions>
 </div>

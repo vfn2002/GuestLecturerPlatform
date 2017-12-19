@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material";
 import {LoginComponent} from "../login/login.component";
+import {ApplicationService} from "../services/application.service";
+import {LoginService} from "../services/login.service";
 
 @Component({
   selector: 'app-header',
@@ -9,9 +11,20 @@ import {LoginComponent} from "../login/login.component";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  isUserLoggedIn = false;
+
+  constructor(public dialog: MatDialog,
+              public application: ApplicationService) { }
 
   ngOnInit() {
+    /**
+     * Observe when user login status changes.
+     */
+    this.application.observeLoginStatus().subscribe(
+      bool => {
+        this.isUserLoggedIn = bool;
+      }
+    );
   }
 
   openLoginDialogue() {

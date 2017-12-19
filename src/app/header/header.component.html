@@ -4,10 +4,15 @@
     <mat-list>
       <mat-list-item> Student </mat-list-item>
       <mat-list-item> Professional </mat-list-item>
-      <mat-list-item> Dank memer </mat-list-item>
       <mat-list-item> Student </mat-list-item>
       <mat-list-item> Professional </mat-list-item>
-      <mat-list-item> Dank memer </mat-list-item>
+      <mat-list-item> Professional </mat-list-item>
+      <mat-list-item> Professional </mat-list-item>
+      <mat-list-item> Professional </mat-list-item>
+      <mat-list-item> Professional </mat-list-item>
+      <mat-list-item> Professional </mat-list-item>
+      <mat-list-item> Professional </mat-list-item>
+      <mat-list-item> Professional </mat-list-item>
     </mat-list>
   </mat-drawer>
 
@@ -18,7 +23,8 @@
       </button>
       <img class="logo" src="http://fypster.com/wp-content/uploads/2017/11/fypster.png">
       <span class="app-bar-spacer"></span>
-      <button mat-icon-button (click)="openLoginDialogue()">
+      <button *ngIf="!isUserLoggedIn" mat-button (click)="openLoginDialogue()">Sign in</button>
+      <button *ngIf="isUserLoggedIn" mat-icon-button>
         <mat-icon aria-label>account_circle</mat-icon>
       </button>
     </mat-toolbar-row>
