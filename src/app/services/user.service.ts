@@ -10,23 +10,23 @@ export class UserService {
   private _professionals = [
     {
       name: 'Victor Nielsen',
-      Company: 'Google'
+      company: 'Google'
     },
     {
       name: 'Victor Nielsen',
-      Company: 'Google'
+      company: 'Google'
     },
     {
       name: 'Victor Nielsen',
-      Company: 'Google'
+      company: 'Google'
     },
     {
       name: 'Victor Nielsen',
-      Company: 'Google'
+      company: 'Google'
     },
     {
       name: 'Victor Nielsen',
-      Company: 'Google'
+      company: 'Google'
     },
   ];
 

@@ -20,4 +20,9 @@ export class FindGuestLecturersComponent implements OnInit {
 
   }
 
+  invite(event: Event) {
+    event.srcElement.setAttribute('disabled', 'true');
+    event.srcElement.innerHTML = 'Request sent';
+  }
+
 }
