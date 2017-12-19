@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {
   MatAutocompleteModule,
-  MatButtonModule, MatCardModule, MatChipsModule, MatDialogModule, MatFormField, MatFormFieldModule, MatGridListModule,
+  MatButtonModule, MatCardModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatFormField,
+  MatFormFieldModule, MatGridListModule,
   MatIconModule,
-  MatInputModule, MatListModule,
+  MatInputModule, MatListModule, MatNativeDateModule,
   MatProgressSpinnerModule,
   MatSelectModule,
   MatSidenavModule, MatSnackBarModule,
@@ -30,7 +31,12 @@ import {LoginService} from "./services/login.service";
 import {Http, HttpModule} from "@angular/http";
 import { LecturerComponent } from './signup/lecturer/lecturer.component';
 import { ProfessionalComponent } from './signup/professional/professional.component';
-
+import { EventsComponent } from './events/events.component';
+import { EventBoxComponent } from './events/event-box/event-box.component';
+import { NewEventComponent } from './events/new-event/new-event.component';
+import {EventService} from "./services/event.service";
+import { EditEventComponent } from './events/edit-event/edit-event.component';
+import { FindGuestLecturersComponent } from './find-guest-lecturers/find-guest-lecturers.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +48,12 @@ import { ProfessionalComponent } from './signup/professional/professional.compon
     SignupComponent,
     StudentComponent,
     LecturerComponent,
-    ProfessionalComponent
+    ProfessionalComponent,
+    EventsComponent,
+    EventBoxComponent,
+    NewEventComponent,
+    EditEventComponent,
+    FindGuestLecturersComponent
   ],
   imports: [
     routing,
@@ -67,6 +78,8 @@ import { ProfessionalComponent } from './signup/professional/professional.compon
     ReactiveFormsModule,
     HttpClientModule,
     MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     HttpModule
   ],
   providers: [
@@ -74,11 +87,13 @@ import { ProfessionalComponent } from './signup/professional/professional.compon
     ApplicationService,
     UserService,
     ApiService,
-    AuthService
+    AuthService,
+    EventService
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    LoginComponent
+    LoginComponent,
+    FindGuestLecturersComponent
   ]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 .drawer-menu {
   height: 100vh;
+  min-width: 200px;
 }
 .app-bar-spacer {
   flex: 1 1 auto;

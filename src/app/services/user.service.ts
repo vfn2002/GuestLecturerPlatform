@@ -7,6 +7,28 @@ import {ApiService} from "./api.service";
 export class UserService {
 
   user: User;
+  private _professionals = [
+    {
+      name: 'Victor Nielsen',
+      Company: 'Google'
+    },
+    {
+      name: 'Victor Nielsen',
+      Company: 'Google'
+    },
+    {
+      name: 'Victor Nielsen',
+      Company: 'Google'
+    },
+    {
+      name: 'Victor Nielsen',
+      Company: 'Google'
+    },
+    {
+      name: 'Victor Nielsen',
+      Company: 'Google'
+    },
+  ];
 
   constructor(private api: ApiService) { }
 
@@ -20,6 +42,14 @@ export class UserService {
 
   postProfessional(professional: any) {
     return this.api.post('/professionals', professional);
+  }
+
+  get professionals() {
+    return this._professionals;
+  }
+
+  set professionals(value) {
+    this._professionals = value;
   }
 
 }

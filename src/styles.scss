@@ -28,3 +28,27 @@ html, body {
   width: 100%;
   font-size: large;
 }
+
+.title-toolbar {
+  margin-top: 25px;
+  background: none;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+
+.fab {
+  position: fixed;
+  bottom: 60px;
+  right: 60px;
+}
+
+.full-width-row {
+  width: 100%;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

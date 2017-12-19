@@ -1,0 +1,11 @@
+.events-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  width: 100%;
+}
+.events-container {
+  width: 100%;
+  padding: 0 20vw;
+}
