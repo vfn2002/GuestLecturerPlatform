@@ -1,7 +1,13 @@
+<mat-toolbar class="new-event-toolbar">
+  <div class="toolbar-container">
+    <span>
+      <h1 class="mat-display-2 new-event-title">New event</h1>
+    </span>
+    <span class="spacer"></span>
+  </div>
+</mat-toolbar>
 <div class="content-container">
-  <div class="new-event-container">
-    <h1>New event</h1>
-
+  <!--<div class="new-event-container">
     <mat-card>
       <mat-card-header>
       </mat-card-header>
@@ -87,5 +93,139 @@
       <mat-card-actions>
       </mat-card-actions>
     </mat-card>
-  </div>
+  </div>-->
+
+  <mat-horizontal-stepper [linear]="true">
+    <mat-step [stepControl]="whatForm">
+      <form [style.fontSize.px]="20" [formGroup]="whatForm">
+        <ng-template matStepLabel>What</ng-template>
+        <mat-form-field color="accent" class="full-width-row top-spacing">
+          <input #title
+                 name="title"
+                 formControlName="title"
+                 matInput
+                 placeholder="Title"
+                [(ngModel)]="event.title">
+          <mat-hint align="start">Start by entering the title of the event.</mat-hint>
+          <mat-hint align="end">{{title.value.length}} / 256</mat-hint>
+          <mat-error *ngIf="whatForm.controls['title'].invalid">
+            Title is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field color="accent" class="full-width-row top-spacing">
+          <textarea #description
+                    name="description"
+                    formControlName="description"
+                    matInput
+                    placeholder="Description"
+                    matTextareaAutosize
+                    matAutosizeMinRows="2"
+                    matAutosizeMaxRows="10"
+                    [(ngModel)]="event.description"></textarea>
+          <mat-hint align="start">Write a short description of the event. You can always change this later</mat-hint>
+          <mat-hint align="end">{{description.value.length}} / 256</mat-hint>
+          <mat-error *ngIf="whatForm.controls['description'].invalid">
+            Description is required
+          </mat-error>
+        </mat-form-field>
+        <div class="new-event-button-container">
+          <button mat-raised-button matStepperNext color="accent">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="whenForm">
+      <form [style.fontSize.px]="20" [formGroup]="whenForm">
+        <ng-template matStepLabel>When</ng-template>
+        <mat-form-field color="accent" class="full-width-row top-spacing">
+          <input matInput
+                 name="date"
+                 formControlName="date"
+                 type="datetime"
+                 [matDatepicker]="picker"
+                 placeholder="Date"
+                 [(ngModel)]="event.date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker color="accent"></mat-datepicker>
+          <mat-hint align="start">What day is the event at? Click the calendar to select. (MM/DD/YYYY)</mat-hint>
+          <mat-error *ngIf="whenForm.controls['date'].invalid">
+            You must select a date. This can be changed later.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field color="accent" class="full-width-row top-spacing">
+          <input #time
+                 name="time"
+                 formControlName="time"
+                 matInput
+                 placeholder="Time"
+                 type="time"
+                 [(ngModel)]="event.time">
+          <mat-hint align="start">Select the time of day.</mat-hint>
+          <mat-error *ngIf="whenForm.controls['time'].invalid">
+            Setting a time is required. You can change this later.
+          </mat-error>
+        </mat-form-field>
+        <div class="new-event-button-container">
+          <button mat-raised-button matStepperPrevious color="accent">Back</button>
+          <button mat-raised-button matStepperNext color="accent">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="whereForm">
+      <form [style.fontSize.px]="20" [formGroup]="whereForm">
+        <ng-template matStepLabel>Where</ng-template>
+        <mat-form-field color="accent" class="full-width-row top-spacing">
+          <input matInput
+                 #location
+                 name="location"
+                 formControlName="location"
+                 placeholder="Location"
+                 [(ngModel)]="event.location">
+          <mat-hint align="start">Where is the event taking place?</mat-hint>
+          <mat-error *ngIf="whereForm.controls['location'].invalid">
+            You must select a location. It could be a classroom or auditorium.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field color="accent" class="full-width-row top-spacing">
+          <input matInput
+                 #maxSeats
+                 name="maxSeats"
+                 formControlName="maxSeats"
+                 type="number"
+                 placeholder="Maximum capacity"
+                 [(ngModel)]="event.maxSeats">
+          <mat-hint align="start">How many people can attend? is there a seat limit?</mat-hint>
+          <mat-error *ngIf="whereForm.controls['maxSeats'].invalid">
+            You must select a maximum number of people who can sign up.
+          </mat-error>
+        </mat-form-field>
+        <div class="new-event-button-container">
+          <button mat-raised-button matStepperPrevious color="accent">Back</button>
+          <button mat-raised-button matStepperNext color="accent">Finish</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Finish</ng-template>
+      <div class="finished-container">
+        <mat-list role="list">
+          <mat-list-item role="listitem">Title: {{event.title}}</mat-list-item>
+          <mat-list-item role="listitem">Description: {{event.description}}</mat-list-item>
+          <mat-list-item role="listitem">Date: {{event.date}}</mat-list-item>
+          <mat-list-item role="listitem">Time: {{event.time}}</mat-list-item>
+          <mat-list-item role="listitem">Location: {{event.location}}</mat-list-item>
+          <mat-list-item role="listitem">Max Capacity: {{event.maxSeats}}</mat-list-item>
+        </mat-list>
+        <div class="new-event-button-container">
+          <button mat-raised-button color="accent" class="full-width-button" (click)="submitForm()">Create Event</button>
+          <button mat-button class="full-width-button top-spacing" matStepperPrevious>Not correct? Go back.</button>
+        </div>
+      </div>
+    </mat-step>
+
+  </mat-horizontal-stepper>
+
+
 </div>

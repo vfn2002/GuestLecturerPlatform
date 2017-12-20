@@ -1,0 +1,20 @@
+<div class="notification-item-container">
+  <mat-toolbar class="notification-toolbar">
+    <span>{{notificationTitle()}}</span>
+    <span class="spacer"></span>
+    <div class="button-controls" *ngIf="!isAnswered">
+          <span>
+      <button mat-button (click)="accept()">Accept</button>
+    </span>
+      <span>
+      <button mat-button color="warn" (click)="decline()">Decline</button>
+    </span>
+    </div>
+    <div class="answer-container" *ngIf="isAnswered">
+      <span *ngIf="isAccepted"><a>You accepted the invitation</a></span>
+      <span *ngIf="!isAccepted"><a>You declined the invitation</a></span>
+    </div>
+
+  </mat-toolbar>
+
+</div>

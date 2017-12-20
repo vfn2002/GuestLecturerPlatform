@@ -1,14 +1,18 @@
 :host {
   padding: 5px;
   width: 100%;
+  height: 100%;
 }
 .event-card {
   width: 100%;
+  height: 100%;
 }
 .event-box-container {
   width: 100%;
+  height: 100%;
 }
 .example-header-image {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }
+

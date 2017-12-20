@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {ApiService} from './api.service';
 import {Observable, Subject} from "rxjs";
+import {AuthService} from "./auth.service";
+import {UserService} from "./user.service";
 
 @Injectable()
 export class LoginService {
@@ -9,10 +11,14 @@ export class LoginService {
   private loginStatusObservable: Observable<boolean> = this.loginStatusSubject.asObservable();
   private _isLoggedIn: boolean;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService,
+              private auth: AuthService,
+              private user: UserService) {
+  }
 
   login(credentials: any) {
     const endpoint = this.getEndpoint(credentials);
+    this.auth.user_type = credentials.type + 's';
     const wrappedCredentials = {
       email: credentials.email,
       password: credentials.password
@@ -40,6 +46,17 @@ export class LoginService {
 
   public observeLoginStatus(): Observable<boolean> {
     return this.loginStatusObservable;
+  }
+
+  loginWithLocalStorage() {
+    if (this.auth.getLocalStorageAuthHeaders()) {
+      this.auth.validateHeaders(this.auth.getLocalStorageAuthHeaders()).subscribe(
+        res => {
+          this.user.user.id = res.json().data.id;
+          this.setLoggedIn(true);
+        }
+      );
+    }
   }
 
   get isLoggedIn(): boolean {
