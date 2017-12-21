@@ -22,6 +22,7 @@ html, body {
   justify-content: center;
   max-width: 800px;
   margin: 12px 0;
+  width: 100%;
 }
 
 .full-width-button {
@@ -51,4 +52,25 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.event-action-panel > figure {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: inherit !important;
+  * {
+    margin: 5px 0;
+  }
+}
+.event-details-panel > figure {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: inherit !important;
+  align-items: flex-start !important;
+}
+mat-horizontal-stepper {
+  background: none !important;
+}
+.mat-step-icon {
+  background-color: #e91e63 !important;
 }

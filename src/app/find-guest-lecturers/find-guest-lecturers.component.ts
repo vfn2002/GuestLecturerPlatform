@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA} from "@angular/material";
-import {ApplicationService} from "../services/application.service";
+import {ProfessionalsService} from "../services/professionals.service";
+import {BookingService} from "../services/booking.service";
 
 @Component({
   selector: 'app-find-guest-lecturers',
@@ -10,19 +10,39 @@ import {ApplicationService} from "../services/application.service";
 export class FindGuestLecturersComponent implements OnInit {
 
   isLoading = true;
+  event_id: number;
   professionals;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private application: ApplicationService) {
-    this.professionals = this.application.getProfessionals();
-  }
+  constructor(private professionalsService: ProfessionalsService,
+              private bookingService: BookingService) {}
 
   ngOnInit() {
-
+    this.loadProfessionals();
   }
 
-  invite(event: Event) {
-    event.srcElement.setAttribute('disabled', 'true');
-    event.srcElement.innerHTML = 'Request sent';
+  private loadProfessionals() {
+    if (this.professionalsService.professionals) {
+      this.professionals = this.professionalsService.professionals;
+      this.isLoading = false;
+    }
+    this.observeProfessionals();
   }
 
+  private observeProfessionals() {
+    this.professionalsService.observeProfessionals().subscribe(
+      professionals => {
+        this.professionals = professionals;
+        this.isLoading = false;
+      }
+    )
+  }
+
+  invite(professional) {
+    this.bookingService.bookProfessional(professional.id, this.event_id)
+      .subscribe(
+        res => {
+          console.log(res);
+        }
+      )
+  }
 }

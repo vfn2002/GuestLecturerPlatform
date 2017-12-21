@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef, MatSnackBar} from "@angular/material";
 import {ApplicationService} from "../services/application.service";
 import {LoginService} from "../services/login.service";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<LoginComponent>,
               public application: ApplicationService,
-              public snackBar: MatSnackBar) { }
+              public snackBar: MatSnackBar,
+              private userService: UserService) { }
 
   hide = true;
 
@@ -40,6 +42,7 @@ export class LoginComponent implements OnInit {
   }
 
   private handleLoginSuccess(res: any) {
+    this.userService.user.id = res.json().data.id;
     this.application.setUserLoginStatus(true);
     this.dialogRef.close();
     this.isLoading = false;

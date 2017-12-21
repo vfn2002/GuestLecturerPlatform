@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {EventService} from "../services/event.service";
 
 @Component({
   selector: 'app-events',
@@ -7,48 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsComponent implements OnInit {
 
-  events = [
-    {
-      id: 1,
-      name: 'event 1'
-    },
-    {
-      id: 2,
-      name: 'event 2'
-    },
-    {
-      id: 3,
-      name: 'event 3'
-    },
-    {
-      id: 4,
-      name: 'event 4'
-    },
-    {
-      id: 5,
-      name: 'event 4'
-    },
-    {
-      id: 6,
-      name: 'event 4'
-    },
-    {
-      id: 7,
-      name: 'event 4'
-    },
-    {
-      id: 8,
-      name: 'event 4'
-    },
-    {
-      id: 9,
-      name: 'event 4'
-    }
-  ];
+  private events;
+  isLoading = true;
 
-  constructor() { }
+  constructor(private eventService: EventService) { }
 
   ngOnInit() {
+    this.loadEvents();
   }
 
+  private loadEvents() {
+    if (this.eventService.events) {
+      this.events = this.eventService.events;
+      this.isLoading = false;
+    }
+    this.observeEvents();
+  }
+
+  private observeEvents() {
+    this.eventService.observeEvents().subscribe(
+      events => {
+        this.events = events;
+        this.isLoading = false;
+      }
+    )
+  }
 }

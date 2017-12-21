@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material";
 import {LoginComponent} from "../login/login.component";
 import {ApplicationService} from "../services/application.service";
+import {AuthService} from "../services/auth.service";
 import {LoginService} from "../services/login.service";
 
 @Component({
@@ -14,9 +15,15 @@ export class HeaderComponent implements OnInit {
   isUserLoggedIn = false;
 
   constructor(public dialog: MatDialog,
-              public application: ApplicationService) { }
+              public application: ApplicationService,
+              private login: LoginService) { }
 
   ngOnInit() {
+    /**
+     * Attempts to login with locally stored data.
+     */
+    this.login.loginWithLocalStorage();
+
     /**
      * Observe when user login status changes.
      */
@@ -30,5 +37,7 @@ export class HeaderComponent implements OnInit {
   openLoginDialogue() {
     this.dialog.open(LoginComponent);
   }
+
+
 
 }

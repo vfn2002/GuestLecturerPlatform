@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
-import {ApiService} from "./api.service";
 import {Subject} from "rxjs";
 import {Headers, Http, RequestOptions} from "@angular/http";
+import {UserService} from "./user.service";
 
 @Injectable()
 export class AuthService {
 
+  public user_type: string;
+
   private authorizedSubject = new Subject<boolean>();
   observeHeadersPresent = this.authorizedSubject.asObservable();
-  private baseURL = 'https://api.academytest.student-talks.com';
+  private baseURL = 'https://api.fypster.com';
   authOptions = new RequestOptions({
     headers: new Headers(
       {
@@ -23,15 +25,16 @@ export class AuthService {
   constructor(private http: Http) {}
 
   isAuthenticated(): boolean {
+    console.log(this.authOptions.headers);
     return this.checkIfDeviseHeaders(this.authOptions.headers);
   }
 
   validateHeaders(headers: Headers) {
-    // TODO: better way? Gets user when validating local storage headers.
+    this.user_type = headers.get('user-type');
     const options = new RequestOptions({
       headers: headers
     });
-    return this.http.get(this.baseURL + '/auth/validate_token', options)
+    return this.http.get(this.baseURL + '/' + this.user_type + '/validate_token', options)
       .map(
         res => {
           this.authorizedSubject.next(true);
@@ -42,6 +45,10 @@ export class AuthService {
   }
 
   setHeaders(headers: Headers) {
+    // Append user type to headers
+    if(headers.get('user-type')) {
+      this.user_type = headers.get('user-type');
+    }
     if (this.checkIfDeviseHeaders(headers)) {
       this.authOptions.headers = new Headers({
         'Content-Type': 'application/json',
@@ -49,12 +56,11 @@ export class AuthService {
         'client': headers.get('client'),
         'expiry': headers.get('expiry'),
         'token-type': headers.get('token-type'),
-        'uid': headers.get('uid')
+        'uid': headers.get('uid'),
       });
       this.setLocalStorageAuthHeaders(headers);
     } else {
       console.log('Didn\'t set auth headerKeys because they were not present.');
-      //TODO: Show error to report this bug (Headers not present, backend or CORS problem)
     }
   }
 
@@ -63,22 +69,13 @@ export class AuthService {
     loginHeaders.delete('cache-control');
     loginHeaders.delete('expiry');
     loginHeaders.delete('token-type');
-    this.storage.setItem('academy', JSON.stringify(loginHeaders.toJSON()));
+    // Save user type for next visit.
+    loginHeaders.set('user-type', this.user_type);
+    this.storage.setItem('fypster', JSON.stringify(loginHeaders.toJSON()));
   }
 
   getLocalStorageAuthHeaders(): Headers {
-    return new Headers(JSON.parse(this.storage.getItem('academy')));
-  }
-
-  setHeadersFromFacebook(headers) {
-    const convertedHeaders = new Headers();
-    convertedHeaders.append('Content-Type', 'application/json');
-    convertedHeaders.append('access-token', headers.auth_token);
-    convertedHeaders.append('client', headers.client_id);
-    convertedHeaders.append('expiry', headers.expiry + '');
-    convertedHeaders.append('token-type', 'Bearer');
-    convertedHeaders.append('uid', headers.uid);
-    this.setHeaders(convertedHeaders);
+    return new Headers(JSON.parse(this.storage.getItem('fypster')));
   }
 
   // Check if headers contain all 5 Devise Auth Headers
@@ -114,7 +111,7 @@ export class AuthService {
   }
 
   unauthorizeUser() {
-    localStorage.removeItem('academy');
+    localStorage.removeItem('fypster');
     this.http.delete(this.baseURL + '/auth/sign_out/', this.authOptions).subscribe(
       res => {
         this.authOptions = new RequestOptions({

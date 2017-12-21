@@ -49,12 +49,12 @@ export class ApplicationService {
     return this.event.events;
   }
 
-  getProfessionals() {
-    return this.user.professionals;
-  }
-
   addEvent(event) {
     this.event.events.push(event);
+  }
+
+  findEventWithId(id: number) {
+    return this.event.findEventWithId(id);
   }
 
 }

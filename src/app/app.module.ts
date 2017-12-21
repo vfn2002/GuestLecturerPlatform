@@ -9,7 +9,7 @@ import {
   MatInputModule, MatListModule, MatNativeDateModule,
   MatProgressSpinnerModule,
   MatSelectModule,
-  MatSidenavModule, MatSnackBarModule,
+  MatSidenavModule, MatSnackBarModule, MatStepperModule,
   MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
@@ -37,6 +37,13 @@ import { NewEventComponent } from './events/new-event/new-event.component';
 import {EventService} from "./services/event.service";
 import { EditEventComponent } from './events/edit-event/edit-event.component';
 import { FindGuestLecturersComponent } from './find-guest-lecturers/find-guest-lecturers.component';
+import { ViewEventComponent } from './events/view-event/view-event.component';
+import {ProfessionalsService} from "./services/professionals.service";
+import { GuestLecturerItemComponent } from './find-guest-lecturers/guest-lecturer-item/guest-lecturer-item.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { NotificationItemComponent } from './notifications/notification-item/notification-item.component';
+import {NotificationService} from "./services/notification.service";
+import {BookingService} from "./services/booking.service";
 
 @NgModule({
   declarations: [
@@ -53,7 +60,11 @@ import { FindGuestLecturersComponent } from './find-guest-lecturers/find-guest-l
     EventBoxComponent,
     NewEventComponent,
     EditEventComponent,
-    FindGuestLecturersComponent
+    FindGuestLecturersComponent,
+    ViewEventComponent,
+    GuestLecturerItemComponent,
+    NotificationsComponent,
+    NotificationItemComponent
   ],
   imports: [
     routing,
@@ -80,6 +91,7 @@ import { FindGuestLecturersComponent } from './find-guest-lecturers/find-guest-l
     MatSnackBarModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatStepperModule,
     HttpModule
   ],
   providers: [
@@ -88,7 +100,10 @@ import { FindGuestLecturersComponent } from './find-guest-lecturers/find-guest-l
     UserService,
     ApiService,
     AuthService,
-    EventService
+    EventService,
+    ProfessionalsService,
+    NotificationService,
+    BookingService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

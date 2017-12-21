@@ -1,0 +1,23 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.lecturer-avatar {
+  width: 100px;
+  height: 100px;
+  margin: 15px;
+  background-size: cover;
+}
+.event-action-panel > * {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: inherit !important;
+}
+figure {
+  flex-direction: column !important;
+}
+.seats-left {
+  color: rgba(0,0,0,0.43);
+}

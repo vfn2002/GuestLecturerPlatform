@@ -1,10 +1,9 @@
 <div class="content-container">
   <mat-toolbar class="title-toolbar" style="background: none">
-    <span>Edit Event</span>
+    <span>Event Details</span>
   </mat-toolbar>
 
   <mat-card>
-
     <mat-grid-list cols="4">
       <mat-grid-tile [colspan]="3" [rowspan]="2" class="event-details-panel">
         <h1>{{event?.title}}</h1>
@@ -20,8 +19,13 @@
         </mat-list>
       </mat-grid-tile>
 
+
       <mat-grid-tile [colspan]="1" [rowspan]="2" class="event-action-panel">
-        <button mat-raised-button color="primary" class="full-width-button" (click)="openFindSpeakerDialogue()" *ngIf="!isAttending">Find speakers</button>
+        <div mat-card-avatar class="lecturer-avatar" style="background-image: url('/assets/img/lecturer.jpg')"></div>
+        <mat-card-title>Lecturer Name</mat-card-title>
+        <mat-card-subtitle>Programmer</mat-card-subtitle>
+        <button mat-raised-button color="primary" class="full-width-button" (click)="attend()" *ngIf="!isAttending">Attend</button>
+        <button disabled mat-raised-button color="primary" class="full-width-button" (click)="attend()" *ngIf="isAttending">You are attending</button>
         <p class="seats-left">{{event?.max_seats - event?.reserved_seats + ' seats left.'}}</p>
       </mat-grid-tile>
     </mat-grid-list>

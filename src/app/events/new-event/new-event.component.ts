@@ -14,6 +14,10 @@ export class NewEventComponent implements OnInit {
   event = {};
   eventForm: FormGroup;
 
+  whatForm: FormGroup;
+  whenForm: FormGroup;
+  whereForm: FormGroup;
+
   constructor(private formBuilder: FormBuilder,
               private application: ApplicationService,
               private router: Router)
@@ -27,7 +31,29 @@ export class NewEventComponent implements OnInit {
         'time': [null, Validators.required],
         'location': [null, Validators.required]
       });
+
+    this.whatForm = formBuilder.group(
+      {
+        'title': [null, Validators.required],
+        'description': [null, Validators.required]
+      }
+    );
+    this.whenForm = formBuilder.group(
+      {
+        'date': [null, Validators.required],
+        'time': [null, Validators.required]
+      }
+    );
+    this.whereForm = formBuilder.group(
+      {
+        'location': [null, Validators.required],
+        'maxSeats': [null, Validators.required]
+      }
+    );
+
   }
+
+
 
   ngOnInit() {
   }
@@ -62,5 +88,4 @@ export class NewEventComponent implements OnInit {
   private handleFailure() {
     this.isLoading = false;
   }
-
 }

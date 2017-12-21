@@ -2,7 +2,9 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import 'rxjs/Rx';
-import {Http, RequestOptions} from "@angular/http";
+import {Headers, Http, RequestOptions} from "@angular/http";
+import {MatSnackBar, MatSnackBarConfig} from "@angular/material";
+import {AppComponent} from "../app.component";
 
 @Injectable()
 export class ApiService {
@@ -13,30 +15,39 @@ export class ApiService {
    */
 
   private baseURL = 'https://api.fypster.com';
+  private SNACKBAR_DURATION = 4000;
 
-  constructor(private http: Http, private auth: AuthService) { }
+  constructor(private http: Http,
+              private auth: AuthService, public snackBar: MatSnackBar) { }
 
   get(endpoint, headers?: RequestOptions) {
     return this.http.get(this.baseURL + this.fix(endpoint), (headers) ? headers : this.auth.authOptions)
+      .catch(this.catchHandler)
       .map(this.resultHandler, this.errorHandler);
   }
 
   post(endpoint, params, headers?: RequestOptions) {
     return this.http.post(this.baseURL + this.fix(endpoint), params, (headers) ? headers : this.auth.authOptions)
+      .catch(this.catchHandler)
       .map(this.resultHandler, this.errorHandler);
   }
 
   patch(endpoint, params, headers?: RequestOptions) {
     return this.http.patch(this.baseURL + this.fix(endpoint), params, (headers) ? headers : this.auth.authOptions)
+      .catch(this.catchHandler)
       .map(this.resultHandler, this.errorHandler);
   }
 
   delete(endpoint, headers?: RequestOptions) {
-    return this.http.delete(this.baseURL + this.fix(endpoint), (headers) ? headers : this.auth.authOptions).map(this.resultHandler, this.errorHandler);
+    return this.http.delete(this.baseURL + this.fix(endpoint), (headers) ? headers : this.auth.authOptions)
+      .catch(this.catchHandler)
+      .map(this.resultHandler, this.errorHandler);
   }
 
   put(endpoint, params, headers?: RequestOptions) {
-    return this.http.put(this.baseURL + this.fix(endpoint), params, (headers) ? headers : this.auth.authOptions).map(this.resultHandler, this.errorHandler);
+    return this.http.put(this.baseURL + this.fix(endpoint), params, (headers) ? headers : this.auth.authOptions)
+      .catch(this.catchHandler)
+      .map(this.resultHandler, this.errorHandler);
   }
 
   /**
@@ -54,15 +65,19 @@ export class ApiService {
    */
   private resultHandler = res => {
     // try setting the auth headers
+    console.log('result handler called');
     this.auth.setHeaders(res.headers);
     return res;
   }
 
   private errorHandler = err => {
+    this.snackBar.open(err)._dismissAfter(this.SNACKBAR_DURATION);
     return err;
   }
 
   private catchHandler = err => {
+    this.snackBar.open(err)._dismissAfter(this.SNACKBAR_DURATION);
+    return err;
   }
 
   private formatErrors(err): string {

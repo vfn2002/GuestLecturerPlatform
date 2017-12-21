@@ -3,17 +3,7 @@
   <div class="loadingContainer" *ngIf="!professionals">
     <mat-spinner></mat-spinner>
   </div>
-  <div class="professionals-container" *ngFor="let professional of professionals">
-    <mat-card>
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{professional.name}}</mat-card-title>
-        <mat-card-subtitle>{{professional.company}}</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-actions>
-        <button mat-button color="primary" (click)="invite($event)">Invite</button>
-        <button mat-button>View profile</button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
+  <app-guest-lecturer-item *ngFor="let professional of professionals"
+                           [professional]="professional"
+                           (invitationEmitter)="invite($event)"></app-guest-lecturer-item>
 </div>

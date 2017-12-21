@@ -1,0 +1,17 @@
+<div class="content-container">
+  <mat-toolbar class="title-toolbar" style="background: none">
+    <span>Notifications</span>
+  </mat-toolbar>
+  <div class="loadingContainer" *ngIf="isLoading">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+  <mat-card *ngIf="!isLoading">
+    <div class="notifications-container" >
+      <app-notification-item
+        *ngFor="let notification of notifications"
+        [notification]="notification"
+        (acceptEmitter)="accept($event)"
+        (devlineEmitter)="decline($event)"></app-notification-item>
+    </div>
+  </mat-card>
+</div>

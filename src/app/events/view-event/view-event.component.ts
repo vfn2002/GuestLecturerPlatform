@@ -1,21 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {FindGuestLecturersComponent} from "../../find-guest-lecturers/find-guest-lecturers.component";
-import {MatDialog} from "@angular/material";
 import {ActivatedRoute, Params} from "@angular/router";
 import {EventService} from "../../services/event.service";
 
 @Component({
-  selector: 'app-edit-event',
-  templateUrl: './edit-event.component.html',
-  styleUrls: ['./edit-event.component.css']
+  selector: 'app-view-event',
+  templateUrl: './view-event.component.html',
+  styleUrls: ['./view-event.component.css']
 })
-export class EditEventComponent implements OnInit {
+export class ViewEventComponent implements OnInit {
 
   private event: any;
   isLoading = false;
+  isAttending = false;
 
-  constructor(public dialog: MatDialog,
-              private activatedRoute: ActivatedRoute,
+  constructor(private activatedRoute: ActivatedRoute,
               private eventService: EventService) { }
 
   ngOnInit() {
@@ -23,11 +21,6 @@ export class EditEventComponent implements OnInit {
       let eventId: number = params['id'];
       this.loadEvent(eventId);
     });
-  }
-
-  openFindSpeakerDialogue() {
-    const dialogRef = this.dialog.open(FindGuestLecturersComponent);
-    dialogRef.componentInstance.event_id = this.event.id;
   }
 
   private loadEvent(eventId: number) {
@@ -55,4 +48,8 @@ export class EditEventComponent implements OnInit {
     return this.eventService.findEventWithId(id);
   }
 
+  attend() {
+    this.isAttending = true;
+    // TODO: Set user as attending event.
+  }
 }

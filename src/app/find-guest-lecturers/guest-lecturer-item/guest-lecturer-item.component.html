@@ -1,0 +1,14 @@
+<div class="professionals-container">
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Victor Nielsen</mat-card-title>
+      <mat-card-subtitle>{{professional.company}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <button mat-button color="primary" (click)="invite()" *ngIf="!isInvited">Invite</button>
+      <button mat-button color="primary" disabled *ngIf="isInvited">Invite sent</button>
+      <button mat-button>View profile</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
