@@ -22,10 +22,11 @@ export class NotificationsComponent implements OnInit {
     }
     this.notificationService.observeNotifications().subscribe(
       notifications => {
+        console.log('notifications found', notifications);
         this.notifications = notifications;
         this.isLoading = false;
       }
-    )
+    );
   }
 
   accept(notification) {

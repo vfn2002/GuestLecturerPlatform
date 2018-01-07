@@ -31,6 +31,14 @@ export class AuthService {
 
   validateHeaders(headers: Headers) {
     this.user_type = headers.get('user-type');
+
+    /**
+     * Returns nothing if no headers were found.
+     */
+    if (!this.user_type) {
+      return;
+    }
+
     const options = new RequestOptions({
       headers: headers
     });

@@ -36,6 +36,7 @@ export class NotificationService {
   }
 
   private loadNotifications() {
+    // TODO: More notificaions types
     this.loadBookings();
   }
 
@@ -43,7 +44,7 @@ export class NotificationService {
     this.booking.getBookings(this.userService.user.id)
       .subscribe(
         res => {
-          console.log('bookings', res);
+          this.setNotifications(res.json());
         }
       );
   }

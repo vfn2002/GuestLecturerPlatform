@@ -20,7 +20,7 @@ export class NotificationItemComponent implements OnInit {
 
   notificationTitle(): string {
     if (this.notification.type === 'invite') {
-      return 'Invitation to event'
+      return 'Invitation to event';
     }
   }
 
