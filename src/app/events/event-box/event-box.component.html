@@ -1,15 +1,23 @@
 <div class="event-box-container">
-  <mat-card class="event-card">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Victor Nielsen</mat-card-title>
-      <mat-card-subtitle>Professor</mat-card-subtitle>
-    </mat-card-header>
+  <mat-card class="event-card"
+            [style.background-image]="'url(\'/assets/img/backgrounds/1.jpg\')'"
+            [routerLink]="'/events/' + event.id">
+    <div class="date-container">
+      <div class="calendar-box">
+        <p class="calendar-day">24</p>
+        <p class="calendar-month">DEC</p>
+      </div>
+      <span class="spacer"></span>
+    </div>
     <mat-card-content>
-      {{event.name}}
+      <h1 class="mat-headline">
+        {{event.title.toUpperCase()}}
+      </h1>
+      <mat-chip-list class="event-box-footer">
+        <mat-chip class="event-tag">Cryptocurrency</mat-chip>
+        <mat-chip class="event-tag">Memes</mat-chip>
+      </mat-chip-list>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-button color="primary" class="full-width-button" [routerLink]="'/events/' + event.id">View</button>
-    </mat-card-actions>
+
   </mat-card>
 </div>

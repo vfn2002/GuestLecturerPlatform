@@ -38,6 +38,10 @@ export class HeaderComponent implements OnInit {
     this.dialog.open(LoginComponent);
   }
 
+  signOut() {
+    this.login.signOut();
+  }
+
 
 
 }

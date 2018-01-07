@@ -59,6 +59,11 @@ export class LoginService {
     }
   }
 
+  signOut() {
+    this.auth.unauthorizeUser();
+    this.setLoggedIn(false);
+  }
+
   get isLoggedIn(): boolean {
     return this._isLoggedIn;
   }

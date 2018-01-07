@@ -3,9 +3,20 @@
   width: 100%;
   height: 100%;
 }
+a, h1, h2, h3, p {
+  text-shadow: 1px 4px 10px rgba(0,0,0,0.30);
+}
 .event-card {
+  color: white;
+  background-size: cover;
   width: 100%;
   height: 100%;
+  filter: grayscale(40%);
+  transition: 0.2s;
+}
+.event-card:hover {
+  cursor: pointer;
+  filter: grayscale(0%);
 }
 .event-box-container {
   width: 100%;
@@ -15,4 +26,33 @@
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }
-
+.date-container {
+}
+.calendar-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.calendar-day {
+  font-size: 26px;
+  margin: 0;
+}
+.calendar-month {
+  font-size: 10px;
+}
+.event-box-footer {
+  position: absolute;
+  margin-right: 12px;
+  bottom: 24px;
+}
+.event-tag {
+  font-size: 11px;
+  background-color: rgba(255,255,255,0.60);
+  transition: 0.2s !important;
+  margin-bottom: 2px;
+}
+.event-tag:hover {
+  transition: 0.2s;
+  cursor: pointer;
+  background-color: rgba(255,255,255,0.90);
+}

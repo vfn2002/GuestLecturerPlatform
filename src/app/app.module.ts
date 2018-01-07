@@ -6,7 +6,7 @@ import {
   MatButtonModule, MatCardModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatFormField,
   MatFormFieldModule, MatGridListModule,
   MatIconModule,
-  MatInputModule, MatListModule, MatNativeDateModule,
+  MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule,
   MatProgressSpinnerModule,
   MatSelectModule,
   MatSidenavModule, MatSnackBarModule, MatStepperModule,
@@ -44,6 +44,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { NotificationItemComponent } from './notifications/notification-item/notification-item.component';
 import {NotificationService} from "./services/notification.service";
 import {BookingService} from "./services/booking.service";
+import { SearchComponent } from './events/search/search.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import {BookingService} from "./services/booking.service";
     ViewEventComponent,
     GuestLecturerItemComponent,
     NotificationsComponent,
-    NotificationItemComponent
+    NotificationItemComponent,
+    SearchComponent
   ],
   imports: [
     routing,
@@ -92,7 +94,8 @@ import {BookingService} from "./services/booking.service";
     MatDatepickerModule,
     MatNativeDateModule,
     MatStepperModule,
-    HttpModule
+    HttpModule,
+    MatMenuModule
   ],
   providers: [
     LoginService,

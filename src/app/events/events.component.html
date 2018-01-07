@@ -1,10 +1,5 @@
 <div class="content-container">
-  <mat-toolbar class="title-toolbar" style="background: none">
-    <span>Events</span>
-    <span class="spacer"></span>
-    <span>
-    </span>
-  </mat-toolbar>
+  <app-search></app-search>
   <mat-grid-list cols="3" class="events-grid" *ngIf="!isLoading">
     <mat-grid-tile *ngFor="let event of events">
       <app-event-box [event]="event"></app-event-box>

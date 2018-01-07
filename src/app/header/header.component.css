@@ -2,6 +2,11 @@
   height: 100vh;
   min-width: 200px;
 }
+.app-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .app-bar-spacer {
   flex: 1 1 auto;
 }
@@ -13,4 +18,8 @@
 }
 .app-bar {
   /*background-color: white;*/
+}
+.toolbar-container {
+  max-width: 800px;
+  width: 100%;
 }
