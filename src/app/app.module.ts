@@ -45,6 +45,7 @@ import { NotificationItemComponent } from './notifications/notification-item/not
 import {NotificationService} from "./services/notification.service";
 import {BookingService} from "./services/booking.service";
 import { SearchComponent } from './events/search/search.component';
+import { SpeakerBoxComponent } from './events/view-event/speaker-box/speaker-box.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { SearchComponent } from './events/search/search.component';
     GuestLecturerItemComponent,
     NotificationsComponent,
     NotificationItemComponent,
-    SearchComponent
+    SearchComponent,
+    SpeakerBoxComponent
   ],
   imports: [
     routing,

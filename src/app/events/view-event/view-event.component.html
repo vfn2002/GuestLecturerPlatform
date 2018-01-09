@@ -42,6 +42,10 @@
     <span>Speakers</span>
   </mat-toolbar>
   <mat-card>
-
+    <mat-card-content>
+      <div class="speakers-container" *ngIf="event?.professionals">
+        <app-speaker-box *ngFor="let professional of event?.professionals" [professional]="professional"></app-speaker-box>
+      </div>
+    </mat-card-content>
   </mat-card>
 </div>

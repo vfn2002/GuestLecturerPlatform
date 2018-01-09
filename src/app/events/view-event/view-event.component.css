@@ -21,3 +21,9 @@ figure {
 .seats-left {
   color: rgba(0,0,0,0.43);
 }
+.speakers-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

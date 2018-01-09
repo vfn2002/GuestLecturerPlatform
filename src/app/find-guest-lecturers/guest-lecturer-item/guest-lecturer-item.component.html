@@ -1,8 +1,10 @@
 <div class="professionals-container">
   <mat-card>
-    <mat-chip-list>
-      <mat-chip (selectable)="false" *ngFor="let tag of professional.tags?.split(',')">{{tag}}</mat-chip>
-    </mat-chip-list>
+    <div class="tags-container" *ngIf="professional.tags">
+      <mat-chip-list>
+        <mat-chip (selectable)="false" *ngFor="let tag of professional.tags?.split(',')">{{tag}}</mat-chip>
+      </mat-chip-list>
+    </div>
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>{{professional?.user?.name}}</mat-card-title>
@@ -12,6 +14,5 @@
       <button mat-button color="primary" (click)="invite()" *ngIf="!isInvited">Invite</button>
       <button mat-button color="primary" disabled *ngIf="isInvited">Invite sent</button>
     </mat-card-actions>
-    {{professional | json}}
   </mat-card>
 </div>

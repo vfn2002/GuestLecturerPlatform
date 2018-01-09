@@ -1,0 +1,22 @@
+.speaker-box-container {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  filter: grayscale(100%);
+  transition: 0.2s;
+}
+.speaker-box-container:hover {
+  cursor: pointer;
+  filter: grayscale(0%);
+}
+.speaker-name {
+  margin-bottom: 0;
+}
+.lecturer-avatar {
+  width: 80px;
+  height: 80px;
+  margin: 10px;
+  background-size: cover;
+}

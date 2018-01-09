@@ -38,7 +38,7 @@ export class ViewEventComponent implements OnInit {
   private loadEventsAndFindEventWithId(eventId) {
     this.eventService.observeEvents()
       .subscribe(
-        _ => {
+        () => {
           this.event = this.findEvent(eventId);
         }
       )
@@ -52,4 +52,5 @@ export class ViewEventComponent implements OnInit {
     this.isAttending = true;
     // TODO: Set user as attending event.
   }
+
 }
