@@ -1,12 +1,20 @@
 <div class="find-guest-lecturers-container">
   <h2 mat-dialog-title>Find guest lecturers</h2>
-  <mat-chip-list>
-    <mat-chip *ngFor="let tag of getAllTags()">{{tag}}</mat-chip>
-  </mat-chip-list>
+  <div class="filter-container">
+    <p>
+      Filter professionals
+    </p>
+    <mat-chip-list>
+      <mat-chip *ngFor="let tag of uniqueTags"
+                      (click)="toggleFilter(tag)"
+                      [selected]="filteredTags.indexOf(tag) !== -1"
+                      [color]="'accent'">{{tag}}</mat-chip>
+    </mat-chip-list>
+  </div>
   <div class="loadingContainer" *ngIf="!professionals">
     <mat-spinner diameter="40"></mat-spinner>
   </div>
-  <app-guest-lecturer-item *ngFor="let professional of professionals"
+  <app-guest-lecturer-item *ngFor="let professional of filteredProfessionals"
                            [professional]="professional"
                            (invitationEmitter)="invite($event)"></app-guest-lecturer-item>
 </div>
