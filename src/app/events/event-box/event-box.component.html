@@ -14,8 +14,7 @@
         {{event.title.toUpperCase()}}
       </h1>
       <mat-chip-list class="event-box-footer">
-        <mat-chip class="event-tag">Cryptocurrency</mat-chip>
-        <mat-chip class="event-tag">Memes</mat-chip>
+        <mat-chip class="event-tag" *ngFor="let tag of event?.tags?.split(',')">{{tag}}</mat-chip>
       </mat-chip-list>
     </mat-card-content>
 

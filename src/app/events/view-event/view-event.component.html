@@ -1,6 +1,12 @@
 <div class="content-container">
   <mat-toolbar class="title-toolbar" style="background: none">
     <span>Event Details</span>
+    <span class="spacer"></span>
+    <span>
+      <button mat-icon-button [routerLink]="['edit']">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </span>
   </mat-toolbar>
 
   <mat-card>

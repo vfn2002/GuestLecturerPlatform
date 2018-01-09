@@ -27,6 +27,7 @@ export class ProfessionalComponent implements OnInit {
         'email': [null, Validators.compose([Validators.required, Validators.email])],
         'company': [null, Validators.required],
         'education': [null, Validators.required],
+        'tags': [null, Validators.required],
         'password': [null, Validators.compose([Validators.required, Validators.minLength(6)])],
         'passwordConfirm': [null, Validators.compose([Validators.required, Validators.minLength(6)])]
       },

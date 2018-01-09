@@ -31,6 +31,10 @@ export class EventsComponent implements OnInit {
         this.events = events;
         this.isLoading = false;
       }
-    )
+    );
+  }
+
+  filterWithTags(tags) {
+    console.log(tags);
   }
 }

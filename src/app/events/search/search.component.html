@@ -4,5 +4,8 @@
       <input  placeholder="Search" type="search" matInput>
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
+    <mat-chip-list *ngIf="events">
+      <mat-chip *ngFor="let tag of getAllEventTags(events)" (click)="addTag(tag)">{{tag}}</mat-chip>
+    </mat-chip-list>
   </mat-card>
 </div>

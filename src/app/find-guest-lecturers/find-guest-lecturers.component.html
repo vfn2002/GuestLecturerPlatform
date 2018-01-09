@@ -1,7 +1,11 @@
 <div class="find-guest-lecturers-container">
   <h2 mat-dialog-title>Find guest lecturers</h2>
+  <mat-chip-list>
+    {{professionals | json}}
+    <mat-chip *ngFor="let tag of getAllTags()">{{tag}}</mat-chip>
+  </mat-chip-list>
   <div class="loadingContainer" *ngIf="!professionals">
-    <mat-spinner></mat-spinner>
+    <mat-spinner diameter="40"></mat-spinner>
   </div>
   <app-guest-lecturer-item *ngFor="let professional of professionals"
                            [professional]="professional"

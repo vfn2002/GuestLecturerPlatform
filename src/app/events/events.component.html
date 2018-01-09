@@ -1,5 +1,5 @@
 <div class="content-container">
-  <app-search></app-search>
+  <app-search [events]="events" (filterTags)="filterWithTags($event)"></app-search>
   <mat-grid-list cols="3" class="events-grid" *ngIf="!isLoading">
     <mat-grid-tile *ngFor="let event of events">
       <app-event-box [event]="event"></app-event-box>

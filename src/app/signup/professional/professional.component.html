@@ -76,6 +76,13 @@
           </mat-form-field>
           <mat-form-field class="full-width-row">
             <input matInput
+                   id="tags"
+                   name="tags"
+                   placeholder="Tags"
+                   [(ngModel)]="professional.tags">
+          </mat-form-field>
+          <mat-form-field class="full-width-row">
+            <input matInput
                    id="password"
                    type="password"
                    name="password"

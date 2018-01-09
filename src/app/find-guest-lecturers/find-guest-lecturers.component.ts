@@ -43,6 +43,20 @@ export class FindGuestLecturersComponent implements OnInit {
         res => {
           console.log(res);
         }
-      )
+      );
+  }
+
+  getAllTags(): string[] {
+    const uniqueTags = [];
+    for (const professional in this.professionals) {
+      if ((<any>professional).tags) {
+        for (const tag of (<any>professional).tags) {
+          if (uniqueTags.indexOf(tag) === -1) {
+            uniqueTags.push(tag);
+          }
+        }
+      }
+    }
+    return uniqueTags;
   }
 }

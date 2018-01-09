@@ -16,6 +16,9 @@
 .logo {
   height: 50px;
 }
+.logo:hover {
+  cursor: pointer;
+}
 .app-bar {
   /*background-color: white;*/
 }

@@ -6,8 +6,13 @@
   </mat-drawer>
   <mat-toolbar color="accent" class="app-bar" [class.mat-elevation-z4]="true">
     <mat-toolbar-row class="toolbar-container">
-      <img class="logo" src="http://fypster.com/wp-content/uploads/2017/11/fypster.png">
+      <img class="logo" src="http://fypster.com/wp-content/uploads/2017/11/fypster.png" routerLink="/">
       <span class="app-bar-spacer"></span>
+      <span>
+        <button mat-button routerLink="/events">
+          Events
+        </button>
+      </span>
       <div class="logged-in-container" *ngIf="isUserLoggedIn">
         <button  mat-icon-button routerLink="/notifications">
           <mat-icon aria-label>notifications</mat-icon>
