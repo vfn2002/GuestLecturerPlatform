@@ -28,7 +28,7 @@
 
       <mat-grid-tile [colspan]="1" [rowspan]="2" class="event-action-panel">
         <div mat-card-avatar class="lecturer-avatar" style="background-image: url('/assets/img/lecturer.jpg')"></div>
-        <mat-card-title>Lecturer Name</mat-card-title>
+        <mat-card-title>{{event?.lecturer?.user?.name}}</mat-card-title>
         <mat-card-subtitle>Programmer</mat-card-subtitle>
         <button mat-raised-button color="primary" class="full-width-button" (click)="attend()" *ngIf="!isAttending">Attend</button>
         <button disabled mat-raised-button color="primary" class="full-width-button" (click)="attend()" *ngIf="isAttending">You are attending</button>
@@ -42,6 +42,10 @@
     <span>Speakers</span>
   </mat-toolbar>
   <mat-card>
-
+    <mat-card-content>
+      <div class="speakers-container" *ngIf="event?.professionals">
+        <app-speaker-box *ngFor="let professional of event?.professionals" [professional]="professional"></app-speaker-box>
+      </div>
+    </mat-card-content>
   </mat-card>
 </div>

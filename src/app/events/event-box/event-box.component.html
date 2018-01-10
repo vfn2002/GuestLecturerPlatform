@@ -13,7 +13,7 @@
       <h1 class="mat-headline">
         {{event.title.toUpperCase()}}
       </h1>
-      <mat-chip-list class="event-box-footer">
+      <mat-chip-list class="event-box-footer" *ngIf="event?.tags">
         <mat-chip class="event-tag" *ngFor="let tag of event?.tags?.split(',')">{{tag}}</mat-chip>
       </mat-chip-list>
     </mat-card-content>

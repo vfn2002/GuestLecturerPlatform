@@ -11,7 +11,10 @@ export class FindGuestLecturersComponent implements OnInit {
 
   isLoading = true;
   event_id: number;
+  uniqueTags = [];
+  filteredTags = [];
   professionals;
+  filteredProfessionals = [];
 
   constructor(private professionalsService: ProfessionalsService,
               private bookingService: BookingService) {}
@@ -23,6 +26,8 @@ export class FindGuestLecturersComponent implements OnInit {
   private loadProfessionals() {
     if (this.professionalsService.professionals) {
       this.professionals = this.professionalsService.professionals;
+      this.filteredProfessionals = this.professionals;
+      this.uniqueTags = this.getAllTags();
       this.isLoading = false;
     }
     this.observeProfessionals();
@@ -32,6 +37,8 @@ export class FindGuestLecturersComponent implements OnInit {
     this.professionalsService.observeProfessionals().subscribe(
       professionals => {
         this.professionals = professionals;
+        this.filteredProfessionals = this.professionals;
+        this.uniqueTags = this.getAllTags();
         this.isLoading = false;
       }
     )
@@ -48,9 +55,9 @@ export class FindGuestLecturersComponent implements OnInit {
 
   getAllTags(): string[] {
     const uniqueTags = [];
-    for (const professional in this.professionals) {
-      if ((<any>professional).tags) {
-        for (const tag of (<any>professional).tags) {
+    for (const professional of this.professionals) {
+      if (professional.tags) {
+        for (const tag of professional.tags.split(',')) {
           if (uniqueTags.indexOf(tag) === -1) {
             uniqueTags.push(tag);
           }
@@ -58,5 +65,52 @@ export class FindGuestLecturersComponent implements OnInit {
       }
     }
     return uniqueTags;
+  }
+
+  addFilter(tag) {
+    this.filteredTags.push(tag);
+    this.filteredProfessionals = this.getProfessionalsWithFilters();
+  }
+
+  removeFilter(tag) {
+    this.filteredTags.splice(this.filteredTags.indexOf(tag),1);
+    this.filteredProfessionals = this.getProfessionalsWithFilters();
+  }
+
+  toggleFilter(tag) {
+    if (this.isFilterActive(tag)) {
+      this.removeFilter(tag);
+    } else {
+      this.addFilter(tag);
+    }
+  }
+
+  isFilterActive(tag) {
+    return this.filteredTags.indexOf(tag) !== -1;
+  }
+
+  getProfessionalsWithFilters(): any[] {
+    const filteredProfessionals = [];
+    for (const professional of this.professionals) {
+      for (const tag of professional.tags.split(',')) {
+        let found: boolean;
+        // If no tags are selected, show all professionals.
+        if (this.filteredTags.length === 0) {
+          found = true;
+        }
+        for (const filteredTag of this.filteredTags) {
+          // Don't check if professional didn't match with one of the tags.
+          if (!found) found = filteredTag.indexOf(tag) === -1;
+        }
+        // Add if the professional matches the filters and is not already on the list.
+        if (found && filteredProfessionals.indexOf(professional) === -1) filteredProfessionals.push(professional);
+      }
+    }
+    return filteredProfessionals;
+  }
+
+
+  log(ayy) {
+    console.log(ayy);
   }
 }
