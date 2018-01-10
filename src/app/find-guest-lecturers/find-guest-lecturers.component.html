@@ -5,10 +5,10 @@
       Filter professionals
     </p>
     <mat-chip-list [multiple]="true">
-      <mat-chip #chip *ngFor="let tag of uniqueTags"
-                      (click)="toggleFilter(tag)"
-                      [selected]="isFilterActive(tag)"
-                      [color]="'accent'">{{tag}}</mat-chip>
+      <mat-chip *ngFor="let tag of uniqueTags"
+                (click)="toggleFilter(tag)"
+                [selected]="isFilterActive(tag)"
+                [color]="'accent'">{{tag}}</mat-chip>
     </mat-chip-list>
   </div>
   <div class="loadingContainer" *ngIf="!professionals">
