@@ -1,14 +1,27 @@
 .find-guest-lecturers-container {
   width: 700px;
-  height: 400px;
-}
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
+  height: 80vh;
 }
 .professionals-container {
   margin: 10px 0;
 }
 .tags-container {
   margin-bottom: 8px;
+}
+.professional-avatar {
+  background-size: cover;
+  height: 50px;
+  width: 50px;
+}
+.professional-name {
+  margin-bottom: 0;
+}
+.message-container {
+  width: 100%;
+}
+.message {
+  width: 100%;
+}
+.mat-form-field {
+  width: 100%;
 }

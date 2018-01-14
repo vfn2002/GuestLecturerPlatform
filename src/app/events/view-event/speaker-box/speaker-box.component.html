@@ -1,8 +1,5 @@
 <div class="speaker-box-container">
-  <div mat-card-avatar class="lecturer-avatar" style="background-image: url('/assets/img/lecturer.jpg')"></div>
+  <div mat-card-avatar class="professional-avatar" [style.background-image]="'url(' + professional?.user?.image + ')'"></div>
   <h2 class="speaker-name">{{professional?.user?.name}}</h2>
-  <h5>Fypster</h5>
-  <mat-chip-list>
-    <mat-chip (selectable)="false" *ngFor="let tag of professional.tags?.split(',')">{{tag}}</mat-chip>
-  </mat-chip-list>
+  <h5>{{professional?.company}}</h5>
 </div>

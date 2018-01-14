@@ -28,6 +28,7 @@ export class EditEventComponent implements OnInit {
   openFindSpeakerDialogue() {
     const dialogRef = this.dialog.open(FindGuestLecturersComponent);
     dialogRef.componentInstance.event_id = this.event.id;
+    dialogRef.updateSize('auto', '90vh');
   }
 
   private loadEvent(eventId: number) {
@@ -45,7 +46,7 @@ export class EditEventComponent implements OnInit {
   private loadEventsAndFindEventWithId(eventId) {
     this.eventService.observeEvents()
       .subscribe(
-        _ => {
+        () => {
           this.event = this.findEvent(eventId);
         }
       )

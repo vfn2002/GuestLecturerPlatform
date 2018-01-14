@@ -20,9 +20,8 @@
   cursor: pointer;
 }
 .app-bar {
-  /*background-color: white;*/
+  background-color: white;
 }
 .toolbar-container {
-  max-width: 800px;
   width: 100%;
 }

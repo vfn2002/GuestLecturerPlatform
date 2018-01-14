@@ -73,7 +73,7 @@ export class FindGuestLecturersComponent implements OnInit {
   }
 
   removeFilter(tag) {
-    this.filteredTags.splice(this.filteredTags.indexOf(tag),1);
+    this.filteredTags.splice(this.filteredTags.indexOf(tag), 1);
     this.filteredProfessionals = this.getProfessionalsWithFilters();
   }
 
@@ -92,25 +92,14 @@ export class FindGuestLecturersComponent implements OnInit {
   getProfessionalsWithFilters(): any[] {
     const filteredProfessionals = [];
     for (const professional of this.professionals) {
-      for (const tag of professional.tags.split(',')) {
-        let found: boolean;
-        // If no tags are selected, show all professionals.
-        if (this.filteredTags.length === 0) {
-          found = true;
-        }
-        for (const filteredTag of this.filteredTags) {
-          // Don't check if professional didn't match with one of the tags.
-          if (!found) found = filteredTag.indexOf(tag) === -1;
-        }
-        // Add if the professional matches the filters and is not already on the list.
-        if (found && filteredProfessionals.indexOf(professional) === -1) filteredProfessionals.push(professional);
+      const success = this.filteredTags.every(function(tag) {
+        return professional.tags.split(',').indexOf(tag) !== -1;
+      });
+      if (success) {
+        filteredProfessionals.push(professional);
       }
     }
     return filteredProfessionals;
   }
 
-
-  log(ayy) {
-    console.log(ayy);
-  }
 }
