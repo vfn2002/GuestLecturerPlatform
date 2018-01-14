@@ -21,7 +21,7 @@
       </mat-grid-tile>
 
       <mat-grid-tile [colspan]="1" [rowspan]="2" class="event-action-panel">
-        <button mat-raised-button color="primary" class="full-width-button" (click)="openFindSpeakerDialogue()" *ngIf="!isAttending">Find speakers</button>
+        <button mat-raised-button color="primary" class="full-width-button" (click)="openFindSpeakerDialogue()">Find speakers</button>
         <p class="seats-left">{{event?.max_seats - event?.reserved_seats + ' seats left.'}}</p>
       </mat-grid-tile>
     </mat-grid-list>

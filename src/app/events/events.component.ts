@@ -8,7 +8,7 @@ import {EventService} from "../services/event.service";
 })
 export class EventsComponent implements OnInit {
 
-  private events;
+  events;
   isLoading = true;
 
   constructor(private eventService: EventService) { }

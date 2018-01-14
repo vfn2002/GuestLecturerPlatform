@@ -11,7 +11,7 @@ import {EventService} from "../../services/event.service";
 })
 export class EditEventComponent implements OnInit {
 
-  private event: any;
+  event: any;
   isLoading = false;
 
   constructor(public dialog: MatDialog,

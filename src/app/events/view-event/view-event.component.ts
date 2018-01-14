@@ -9,7 +9,7 @@ import {EventService} from "../../services/event.service";
 })
 export class ViewEventComponent implements OnInit {
 
-  private event: any;
+  event: any;
   isLoading = false;
   isAttending = false;
 

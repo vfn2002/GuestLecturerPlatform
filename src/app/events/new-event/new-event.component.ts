@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 export class NewEventComponent implements OnInit {
 
   isLoading = false;
-  event = {};
+  event = <any>{};
   eventForm: FormGroup;
 
   whatForm: FormGroup;
