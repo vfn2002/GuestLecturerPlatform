@@ -19,9 +19,6 @@
 .logo:hover {
   cursor: pointer;
 }
-.app-bar {
-  background-color: white;
-}
 .toolbar-container {
   width: 100%;
 }

@@ -12,6 +12,8 @@ import {LoginService} from "../services/login.service";
 })
 export class HeaderComponent implements OnInit {
 
+  appBarColor = '#FFCA28';
+  appBarTextColor = 'white';
   isUserLoggedIn = false;
 
   constructor(public dialog: MatDialog,

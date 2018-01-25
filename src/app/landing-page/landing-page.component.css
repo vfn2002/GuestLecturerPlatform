@@ -19,9 +19,6 @@
   color: white;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.67);
 }
-.users {
-
-}
 .inline-logo {
   height: 70px;
   transform: translateY(-3px) translateX(-15px);
@@ -102,4 +99,34 @@
 }
 .process-list {
   max-width: 80%;
+}
+
+.landing-page-container {
+  background: url('/assets/img/method-draw-image.svg') top left no-repeat,
+              url('/assets/img/backslant-footer.svg') bottom left no-repeat,
+              url('/assets/img/backslant-home-repeat.svg') left repeat-y;
+  background-size: 100%;
+}
+
+.landing-page-header {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  color: white;
+  text-align: center;
+  width: 60%;
+  margin: 100px 0;
+}
+
+.supporting-statement {
+  font-size: 26px;
+  width: 80%;
+}
+
+.headline {
+  font-size: 42px;
+  margin-bottom: 0px;
+}
+.call-to-action {
+  padding: 10px 25px;
 }
