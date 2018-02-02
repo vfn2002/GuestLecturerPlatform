@@ -1,0 +1,22 @@
+.leave-comment-container {
+  width: 100%;
+}
+.comment-container {
+  flex-grow: 1;
+}
+.full-width {
+  width: 100%;
+}
+.profile-picture {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin: 3px 15px 3px 0;
+}
+.personalized-text-area {
+  display: flex;
+  width: 100%;
+}
+.comment-button {
+  float: right;
+}

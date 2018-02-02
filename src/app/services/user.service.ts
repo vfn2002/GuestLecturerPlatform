@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {User} from "../model/user";
-import {ApiService} from "./api.service";
+import {User} from '../model/user';
+import {ApiService} from './api.service';
 
 @Injectable()
 export class UserService {

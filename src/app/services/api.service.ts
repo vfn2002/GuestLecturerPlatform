@@ -2,9 +2,9 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import 'rxjs/Rx';
-import {Headers, Http, RequestOptions} from "@angular/http";
-import {MatSnackBar, MatSnackBarConfig} from "@angular/material";
-import {AppComponent} from "../app.component";
+import {Headers, Http, RequestOptions} from '@angular/http';
+import {MatSnackBar, MatSnackBarConfig} from '@angular/material';
+import {AppComponent} from '../app.component';
 
 @Injectable()
 export class ApiService {

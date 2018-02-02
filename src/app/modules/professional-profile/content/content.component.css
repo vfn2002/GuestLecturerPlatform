@@ -1,0 +1,8 @@
+.content-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.card-title {
+  font: 700 17px/26px Roboto, "Helvetica Neue", sans-serif;
+  margin-bottom: 3px;
+}
