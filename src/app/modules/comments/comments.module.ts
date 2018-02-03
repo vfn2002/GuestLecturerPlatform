@@ -8,6 +8,7 @@ import { CommentListComponent } from './comment-list/comment-list.component';
 import { CommentListItemComponent } from './comment-list/comment-list-item/comment-list-item.component';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { NumberToArrayPipe } from './pipes/number-to-array.pipe';
+import { AccountCircleModule } from '../account-circle/account-circle.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { NumberToArrayPipe } from './pipes/number-to-array.pipe';
     CommonModule,
     MatButtonModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    AccountCircleModule
   ],
   declarations: [
     CommentSectionComponent,

@@ -5,11 +5,19 @@
     </div>
     <div class="comment-container">
       <mat-form-field class="full-width">
-        <textarea matInput class="full-width" placeholder="Write a comment..." matTextareaAutosize matAutosizeMinRows="1"></textarea>
+        <textarea #commentTextArea
+                  matInput 
+                  class="full-width" 
+                  placeholder="Write a comment..." 
+                  matTextareaAutosize 
+                  matAutosizeMinRows="1"
+                  (focus)="showCommentControls = true"
+                  (blur)="showCommentControls = false"></textarea>
       </mat-form-field>
     </div>
   </div>
-  <div class="controls-container">
-    <button mat-raised-button color="primary" class="comment-button">Comment</button>
+  <div class="controls-container" *ngIf="showCommentControls || commentTextArea.value.length > 0">
+    <button mat-raised-button color="primary" class="comment-button" (click)="resetComment()">Comment</button>
+    <button mat-button class="cancel-button">Cancel</button>
   </div>
 </div>

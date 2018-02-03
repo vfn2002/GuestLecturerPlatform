@@ -1,0 +1,14 @@
+.account-circle-image {
+  border-radius: 50%;
+}
+.initials-circle {
+  border-radius: 50%;
+  background-color: green;
+  text-align: center;
+}
+.initials-text {
+  margin: auto;
+  font-size: 18px;
+  color: white;
+  font-weight: 200
+}

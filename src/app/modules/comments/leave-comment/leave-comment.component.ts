@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeaveCommentComponent implements OnInit {
 
+  showCommentControls = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  resetComment() {
+
   }
 
 }

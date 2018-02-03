@@ -1,0 +1,15 @@
+<div class="profile-circle-container">
+  <img *ngIf="user.profileImage"
+       [src]="user.profileImage"
+       [height]="(size) ? size : DEFAULT_SIZE"
+       [width]="(size) ? size : DEFAULT_SIZE"
+       class="account-circle-image"
+       alt="Profile image">
+  <div *ngIf="!user.profileImage"
+       class="initials-circle"
+       [style.lineHeight]="(size) ? size + 'px' : DEFAULT_SIZE + 'px'"
+       [style.height]="(size) ? size + 'px' : DEFAULT_SIZE + 'px'"
+       [style.width]="(size) ? size + 'px' : DEFAULT_SIZE + 'px'">
+        <p class="initials-text">{{user | userInitials}}</p>
+  </div>
+</div>
