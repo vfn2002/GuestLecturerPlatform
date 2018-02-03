@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../../model/user';
 
 @Component({
   selector: 'app-leave-comment',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./leave-comment.component.css']
 })
 export class LeaveCommentComponent implements OnInit {
+
+  user = new User('Dankus', 'Memeus');
 
   showCommentControls = false;
 

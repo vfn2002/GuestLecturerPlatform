@@ -1,10 +1,12 @@
 .account-circle-image {
   border-radius: 50%;
+  user-select: none;
 }
 .initials-circle {
   border-radius: 50%;
   background-color: green;
   text-align: center;
+  user-select: none;
 }
 .initials-text {
   margin: auto;

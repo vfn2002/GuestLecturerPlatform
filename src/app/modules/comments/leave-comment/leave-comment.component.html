@@ -1,7 +1,9 @@
 <div class="leave-comment-container">
   <div class="personalized-text-area">
     <div class="profile-image-container">
-      <img class="profile-picture" src="/assets/img/lecturer.jpg" alt="Profile image">
+      <div class="profile-picture">
+        <app-profile-circle [user]="user"></app-profile-circle>
+      </div>
     </div>
     <div class="comment-container">
       <mat-form-field class="full-width">

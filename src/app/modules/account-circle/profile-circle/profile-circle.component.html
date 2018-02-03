@@ -10,6 +10,7 @@
        [style.lineHeight]="(size) ? size + 'px' : DEFAULT_SIZE + 'px'"
        [style.height]="(size) ? size + 'px' : DEFAULT_SIZE + 'px'"
        [style.width]="(size) ? size + 'px' : DEFAULT_SIZE + 'px'">
-        <p class="initials-text">{{user | userInitials}}</p>
+        <p class="initials-text" 
+           [style.fontSize]="(size) ? (size / 2)-2 + 'px' : (DEFAULT_SIZE / 2) - 2 + 'px'">{{user | userInitials}}</p>
   </div>
 </div>
