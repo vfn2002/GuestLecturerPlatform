@@ -1,0 +1,20 @@
+<div class="comment-item-container">
+  <div class="comment-item-header">
+    <div class="comment-item-header-top-left">
+      <img class="user-profile-image" src="/assets/img/lecturer.jpg">
+      <div class="name-container">
+        <h3 class="comment-name">{{comment.user.name}}</h3>
+        <h3 class="comment-date">{{comment.date | timeAgo}}</h3>
+      </div>
+    </div>
+    <div class="comment-item-header-top-right">
+      <span class="rating-stars">
+        <mat-icon *ngFor="let i of comment.rating | numberToArray ">star</mat-icon>
+        <mat-icon *ngFor="let j of (MAX_STAR_RATING - comment.rating) | numberToArray">star_border</mat-icon>
+      </span>
+    </div>
+  </div>
+  <div class="comment-item-content">
+    <p class="comment-text">{{comment.comment}}</p>
+  </div>
+</div>

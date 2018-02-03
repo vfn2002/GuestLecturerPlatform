@@ -18,5 +18,5 @@ import { CommentsModule } from '../comments/comments.module';
   declarations: [HeaderComponent, ProfileComponent, ContentComponent]
 })
 export class ProfessionalProfileModule { 
-  
+
 }

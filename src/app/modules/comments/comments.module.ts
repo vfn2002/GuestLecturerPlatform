@@ -2,16 +2,29 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CommentSectionComponent } from './comment-section/comment-section.component';
 import { LeaveCommentComponent } from './leave-comment/leave-comment.component';
-import { MatButtonModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatIconModule } from '@angular/material';
 import { ProfessionalProfileModule } from '../professional-profile/professional-profile.module';
+import { CommentListComponent } from './comment-list/comment-list.component';
+import { CommentListItemComponent } from './comment-list/comment-list-item/comment-list-item.component';
+import { TimeAgoPipe } from './pipes/time-ago.pipe';
+import { NumberToArrayPipe } from './pipes/number-to-array.pipe';
+
 
 @NgModule({
   imports: [
     CommonModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule
   ],
-  declarations: [CommentSectionComponent, LeaveCommentComponent],
+  declarations: [
+    CommentSectionComponent,
+    LeaveCommentComponent,
+    CommentListComponent,
+    CommentListItemComponent,
+    TimeAgoPipe,
+    NumberToArrayPipe
+  ],
   exports: [
     CommentSectionComponent
   ]
