@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="controls-container" *ngIf="showCommentControls || commentTextArea.value.length > 0">
-    <button mat-raised-button color="primary" class="comment-button" (click)="resetComment()">Comment</button>
+    <button mat-raised-button color="primary" class="comment-button" (click)="comment(commentTextArea.value)">Comment</button>
     <button mat-button class="cancel-button">Cancel</button>
   </div>
 </div>

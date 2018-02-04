@@ -2,6 +2,6 @@
   <div class="comment-amount-container">
     <h2>{{comments.length}} comments</h2>
   </div>
-  <app-leave-comment *ngIf="!viewOnly"></app-leave-comment>
+  <app-leave-comment *ngIf="!viewOnly" (addComment)="pushNewComment($event)"></app-leave-comment>
   <app-comment-list [comments]="comments"></app-comment-list>
 </div>

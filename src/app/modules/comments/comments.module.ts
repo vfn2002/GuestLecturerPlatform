@@ -9,6 +9,7 @@ import { CommentListItemComponent } from './comment-list/comment-list-item/comme
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { NumberToArrayPipe } from './pipes/number-to-array.pipe';
 import { AccountCircleModule } from '../account-circle/account-circle.module';
+import { OrderByPipe } from './pipes/order-by.pipe';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { AccountCircleModule } from '../account-circle/account-circle.module';
     CommentListComponent,
     CommentListItemComponent,
     TimeAgoPipe,
-    NumberToArrayPipe
+    NumberToArrayPipe,
+    OrderByPipe
   ],
   exports: [
     CommentSectionComponent

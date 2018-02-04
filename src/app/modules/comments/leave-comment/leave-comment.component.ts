@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { User } from '../../../model/user';
 
 @Component({
@@ -8,7 +8,9 @@ import { User } from '../../../model/user';
 })
 export class LeaveCommentComponent implements OnInit {
 
-  user = new User('Dankus', 'Memeus');
+  @Output() addComment = new EventEmitter<any>();
+  // TODO: Remove dummy data
+  @Input() user = new User('Dankus', 'Memeus');
 
   showCommentControls = false;
 
@@ -17,8 +19,8 @@ export class LeaveCommentComponent implements OnInit {
   ngOnInit() {
   }
 
-  resetComment() {
-
+  comment(comment: string) {
+    this.addComment.emit({user: this.user, comment: comment});
   }
 
 }
