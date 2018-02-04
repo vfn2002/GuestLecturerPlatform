@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { User } from '../../../model/user';
 
 @Component({
   selector: 'app-header',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
+  // TODO: Remove dummy data
+  @Input() user: User = new User('Victor Frederik', 'Nielsen', '', '', '', 1, 'assets/img/profile.jpg');
 
   constructor() { }
 

@@ -22,3 +22,7 @@
 .toolbar-container {
   width: 100%;
 }
+.app-bar {
+  position: absolute;
+  z-index: 3;
+}

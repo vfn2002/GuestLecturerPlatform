@@ -73,3 +73,7 @@ mat-horizontal-stepper {
 .mat-step-icon {
   background-color: #e91e63 !important;
 }
+
+.ignore-mouse {
+  pointer-events: none;
+}

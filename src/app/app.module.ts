@@ -48,6 +48,7 @@ import { SearchComponent } from './components/events/search/search.component';
 import { SpeakerBoxComponent } from './components/events/view-event/speaker-box/speaker-box.component';
 import { ProfessionalProfileModule } from './modules/professional-profile/professional-profile.module';
 import { CommentsModule } from './modules/comments/comments.module';
+import { AccountCircleModule } from './modules/account-circle/account-circle.module';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,8 @@ import { CommentsModule } from './modules/comments/comments.module';
     MatStepperModule,
     HttpModule,
     MatMenuModule,
-    ProfessionalProfileModule
+    ProfessionalProfileModule,
+    AccountCircleModule
   ],
   providers: [
     LoginService,

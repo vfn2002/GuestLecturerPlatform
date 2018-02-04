@@ -4,7 +4,7 @@
       <a mat-list-item routerLink="/events" (click)="drawer.toggle()"> Events </a>
     </mat-nav-list>
   </mat-drawer>
-  <mat-toolbar [style.background-color]="'white'" [style.color]="appBarTextColor" class="app-bar" [class.mat-elevation-z4]="true">
+  <mat-toolbar [style.background-color]="appBarColor" [style.color]="appBarTextColor" class="app-bar">
     <mat-toolbar-row class="toolbar-container">
       <img class="logo" src="http://fypster.com/wp-content/uploads/2017/11/fypster.png" routerLink="/">
       <span class="app-bar-spacer"></span>
@@ -19,7 +19,7 @@
         </button>
 
         <button mat-icon-button [matMenuTriggerFor]="menu">
-          <mat-icon aria-label>account_circle</mat-icon>
+          <app-profile-circle [size]="32" [user]="user"></app-profile-circle>
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>
