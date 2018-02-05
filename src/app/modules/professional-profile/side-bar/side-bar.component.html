@@ -3,22 +3,26 @@
     <!-- Right side mode -->
     <div class="side-bar-container col-12" *ngIf="rightSide">
       <mat-card>
-          
+          <h3 class="side-bar-title">SCHEDULE</h3>
+          <mat-calendar></mat-calendar>
       </mat-card>
     </div>
     <!-- Left side mode -->
     <div class="side-bar-container col-12" *ngIf="!rightSide">
       <mat-card>
-        <mat-list>
-          <mat-list-item>
-            <mat-icon mat-list-icon>web</mat-icon>
-            <p mat-line>Website</p>
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon mat-list-icon>insert_drive_file</mat-icon>
-            <p mat-line>Portfolio</p>
-          </mat-list-item>
-        </mat-list>
+        <h3 class="side-bar-title">LINKS</h3>
+        <div class="link-container row">
+            <div class="col-2">
+              <mat-icon class="link-icon">web</mat-icon>
+            </div>
+            <div class="row">
+              <div class="link-container col-10">
+                <a href="#" class="link" matTooltip="www.fypster.com" matTooltipPosition="right">Website</a>
+              </div>
+            </div>
+        </div>
+        <div class="link-container">
+        </div>
       </mat-card>
     </div>
   </div>

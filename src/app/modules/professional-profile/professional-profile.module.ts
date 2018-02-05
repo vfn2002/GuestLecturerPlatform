@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { ProfileComponent } from './profile/profile.component';
-import { MatIconModule, MatButtonModule, MatCardModule, MatTabsModule, MatChipsModule, MatTooltipModule, MatListModule } from '@angular/material';
+import { MatIconModule, MatButtonModule, MatCardModule, MatTabsModule, MatChipsModule, MatTooltipModule, MatListModule, MatDatepickerModule } from '@angular/material';
 import { ContentComponent } from './content/content.component';
 import { CommentsModule } from '../comments/comments.module';
 import { AccountCircleModule } from '../account-circle/account-circle.module';
@@ -23,7 +23,8 @@ import { ProfileListItemComponent } from './similar-profiles/profile-list-item/p
     AccountCircleModule,
     MatChipsModule,
     MatTooltipModule,
-    MatListModule
+    MatListModule,
+    MatDatepickerModule
   ],
   declarations: [HeaderComponent, ProfileComponent, ContentComponent, SideBarComponent, AboutComponent, SimilarProfilesComponent, ProfileListComponent, ProfileListItemComponent]
 })

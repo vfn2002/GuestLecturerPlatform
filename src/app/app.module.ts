@@ -49,6 +49,7 @@ import { SpeakerBoxComponent } from './components/events/view-event/speaker-box/
 import { ProfessionalProfileModule } from './modules/professional-profile/professional-profile.module';
 import { CommentsModule } from './modules/comments/comments.module';
 import { AccountCircleModule } from './modules/account-circle/account-circle.module';
+import { FooterModule } from './modules/footer/footer.module';
 
 @NgModule({
   declarations: [
@@ -102,7 +103,8 @@ import { AccountCircleModule } from './modules/account-circle/account-circle.mod
     HttpModule,
     MatMenuModule,
     ProfessionalProfileModule,
-    AccountCircleModule
+    AccountCircleModule,
+    FooterModule
   ],
   providers: [
     LoginService,

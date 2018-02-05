@@ -1,0 +1,18 @@
+.side-bar-title {
+  color: rgba(0,0,0,0.50);
+  font-weight: 700;
+}
+.link {
+  margin: auto;
+  color: rgba(0,0,0,0.50);
+  line-height: 20px;
+}
+.link-icon {
+  text-align: center;
+  color: rgba(0,0,0,0.50);
+  margin: auto;
+  font-size: 14px;
+}
+.link-container {
+  height: 20px;
+}
