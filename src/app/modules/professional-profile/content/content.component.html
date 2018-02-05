@@ -5,6 +5,11 @@
       <app-about></app-about>
       <app-comment-section></app-comment-section>
     </div>
-    <app-side-bar class="col-3 d-none d-lg-block"></app-side-bar>
+    <div class="right-side-container col-3 d-none d-lg-block">
+      <div class="row">
+        <app-side-bar [rightSide]="true" class="col-12"></app-side-bar>
+        <app-similar-profiles></app-similar-profiles>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,0 +1,24 @@
+.title-text {
+  color: rgba(0,0,0,0.56);
+  font-size: 12px;
+  margin: 0;
+}
+.name-text {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  height: 18px;
+}
+.profile-container {
+  margin: auto;
+}
+.profile-list-item-container {
+  margin: 10px 0;
+}
+.profile-list-item-container:hover {
+  user-select: none;
+  cursor: pointer;
+}
+.text-container{
+  margin: auto;
+}
